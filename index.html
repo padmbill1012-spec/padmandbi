@@ -72,6 +72,18 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
+            min-width: 320px;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        img,
+        iframe,
+        video,
+        svg {
+            max-width: 100%;
+            height: auto;
+            display: block;
         }
 
         /* Header Styles */
@@ -114,6 +126,35 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 6px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: #d41f26;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
         }
 
         .logo {
@@ -212,6 +253,12 @@
             align-items: center;
         }
 
+        nav {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
+
         nav a {
             text-decoration: none;
             color: #333;
@@ -259,6 +306,13 @@
             font-size: 24px;
             margin-bottom: 20px;
             text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero-content {
+            width: 100%;
+            max-width: 900px;
+            padding: 0 20px;
+            margin: 0 auto;
         }
 
         .hero-content .tagline {
@@ -313,6 +367,8 @@
         .section-container {
             max-width: 1200px;
             margin: 0 auto;
+            width: 100%;
+            padding: 0 20px;
         }
 
         .section-title {
@@ -775,6 +831,98 @@
         font-size: 18px;
     }
 
+    /* Hiring & Partners Sections */
+    #careers,
+    #partners {
+        background-color: #f9f9f9;
+    }
+
+    #careers .section-container,
+    #partners .section-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .hiring-grid,
+    .partners-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 30px;
+        align-items: center;
+    }
+
+    .hiring-poster img,
+    .partner-card {
+        width: 100%;
+        border-radius: 15px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    }
+
+    .hiring-info {
+        background: white;
+        padding: 35px;
+        border-radius: 15px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+    }
+
+    .hiring-info h3,
+    .partner-card h3 {
+        margin-top: 0;
+        color: #d41f26;
+        font-size: 28px;
+    }
+
+    .hiring-info p,
+    .partner-card p,
+    .partners-note p {
+        color: #444;
+        line-height: 1.8;
+        margin-bottom: 20px;
+    }
+
+    .hiring-list,
+    .partner-card ul {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 25px;
+    }
+
+    .hiring-list li,
+    .partner-card ul li {
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+        color: #555;
+    }
+
+    .partner-card {
+        background: white;
+        padding: 30px;
+    }
+
+    .partner-card ul li:last-child,
+    .hiring-list li:last-child {
+        border-bottom: none;
+    }
+
+    .partners-note {
+        margin-top: 30px;
+        padding: 30px;
+        background: white;
+        border-radius: 15px;
+        border: 1px solid #f0f0f0;
+    }
+
+    .partners-note p {
+        margin: 0;
+    }
+
+    @media (max-width: 1024px) {
+        .hiring-grid,
+        .partners-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
     @media (max-width: 768px) {
         .tickets-content {
             grid-template-columns: 1fr;
@@ -957,15 +1105,117 @@
         }
 
         /* Responsive Design */
-        @media (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
+        @media (max-width: 1024px) {
+            .section-container {
+                padding: 50px 30px;
+            }
+
+            .nav-container {
+                padding: 12px 30px;
                 gap: 15px;
             }
 
             .header-top-content {
                 flex-direction: column;
-                gap: 15px;
+                gap: 10px;
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .header-top {
+                display: none;
+            }
+
+            .nav-container {
+                padding: 8px 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+                order: 3;
+            }
+
+            nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                display: none;
+                max-height: calc(100vh - 70px);
+                overflow-y: auto;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                z-index: 999;
+                padding-bottom: 20px;
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            nav ul {
+                flex-direction: column;
+                width: 100%;
+                gap: 0;
+                padding: 15px 0;
+            }
+
+            nav ul li {
+                width: 100%;
+                border-bottom: 1px solid #f0f0f0;
+            }
+
+            nav ul li a {
+                display: block;
+                padding: 12px 18px;
+                min-height: 40px;
+                display: flex;
+                align-items: center;
+                font-size: 14px;
+            }
+
+            .logo {
+                font-size: 18px;
+                order: 1;
+                gap: 8px;
+            }
+
+            .logo-symbol {
+                width: 40px;
+                height: 40px;
+            }
+
+            .nav-container {
+                padding: 8px 12px;
+                gap: 8px;
+            }
+
+            .header-top {
+                display: none;
+            }
+
+            .header-top-content {
+                display: none;
+            }
+
+            .header-top-left {
+                display: none;
+            }
+
+            .header-top-right {
+                display: none;
+            }
+
+            .cta-button {
+                display: none;
+            }
+
+            .section-container {
+                padding: 40px 20px;
             }
 
             .about-content {
@@ -973,11 +1223,16 @@
             }
 
             .hero-content h1 {
-                font-size: 36px;
+                font-size: 32px;
             }
 
             .hero-content p {
-                font-size: 18px;
+                font-size: 16px;
+            }
+
+            .hero {
+                height: 350px;
+                padding: 20px;
             }
 
             .contact-content {
@@ -985,11 +1240,369 @@
             }
 
             .cta-info {
-                gap: 30px;
+                gap: 20px;
+                flex-direction: column;
+            }
+
+            .cta-info-item {
+                font-size: 14px;
+            }
+
+            #cta h2 {
+                font-size: 28px;
+                margin-bottom: 20px;
+            }
+
+            .section-title {
+                font-size: 28px;
+                margin-bottom: 30px;
+            }
+
+            .primary-btn, .secondary-btn {
+                padding: 12px 25px;
+                font-size: 14px;
+                min-height: 44px;
+                min-width: 44px;
+            }
+
+            .services-grid, .why-grid, .gallery-grid, .videos-grid, .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .gallery-item {
+                height: 200px;
+            }
+
+            .video-item {
+                box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            }
+
+            .about-text h3 {
+                font-size: 20px;
+            }
+
+            .about-text p {
+                font-size: 14px;
+                line-height: 1.6;
+            }
+
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                padding: 12px;
+                font-size: 16px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .footer-column h3 {
+                font-size: 16px;
+            }
+
+            .footer-column {
+                text-align: center;
+            }
+
+            .footer-column ul li {
+                margin-bottom: 8px;
+            }
+
+            .holi-banner {
+                padding: 30px 15px;
+            }
+
+            .holi-banner h2 {
+                font-size: 28px;
+                margin-bottom: 15px;
+            }
+
+            .holi-image {
+                max-width: 100%;
+            }
+
+            .tickets-content {
+                grid-template-columns: 1fr;
+            }
+
+            .booking-buttons {
+                flex-direction: column;
+            }
+
+            .booking-btn {
+                width: 100%;
+                min-height: 44px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .header-top {
+                display: none;
+            }
+
+            .header-top-content {
+                display: none;
+            }
+
+            .nav-container {
+                padding: 6px 10px;
+            }
+
+            .logo {
+                font-size: 16px;
+                gap: 5px;
+            }
+
+            .logo-symbol {
+                width: 36px;
+                height: 36px;
+            }
+
+            .section-container {
+                padding: 30px 15px;
+            }
+
+            .section-title {
+                font-size: 24px;
+                margin-bottom: 25px;
+            }
+
+            .hero h1 {
+                font-size: 28px;
             }
 
             .hero {
-                height: 400px;
+                height: 300px;
+                padding: 15px;
+            }
+
+            .primary-btn, .secondary-btn {
+                padding: 11px 22px;
+                font-size: 13px;
+            }
+
+            .cta-button {
+                padding: 10px 15px;
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-top {
+                display: none;
+            }
+
+            .header-top-content {
+                display: none;
+            }
+
+            .header-top-left span, .header-top-right {
+                display: none;
+            }
+
+            .logo {
+                font-size: 15px;
+                gap: 4px;
+            }
+
+            .logo-symbol {
+                width: 32px;
+                height: 32px;
+            }
+
+            .nav-container {
+                padding: 6px 8px;
+            }
+
+            .hamburger span {
+                width: 20px;
+                height: 2.5px;
+            }
+
+            nav ul li a {
+                padding: 12px 15px;
+                font-size: 14px;
+                min-height: 40px;
+            }
+
+            .section-container {
+                padding: 25px 12px;
+            }
+
+            .section-title {
+                font-size: 22px;
+                margin-bottom: 20px;
+            }
+
+            .hero-content h1 {
+                font-size: 24px;
+                margin-bottom: 10px;
+            }
+
+            .hero-content p {
+                font-size: 13px;
+            }
+
+            .hero {
+                height: 280px;
+                padding: 10px;
+            }
+
+            .hero-buttons {
+                gap: 8px;
+                flex-wrap: wrap;
+            }
+
+            .primary-btn, .secondary-btn {
+                padding: 10px 18px;
+                font-size: 12px;
+                min-height: 40px;
+            }
+
+            .cta-button {
+                padding: 8px 12px;
+                font-size: 11px;
+                min-height: 40px;
+            }
+
+            #cta h2 {
+                font-size: 24px;
+                margin-bottom: 15px;
+            }
+
+            .cta-info {
+                gap: 15px;
+            }
+
+            .cta-info-item {
+                font-size: 12px;
+            }
+
+            .contact-form {
+                padding: 20px;
+            }
+
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                padding: 10px;
+                font-size: 14px;
+            }
+
+            .form-group label {
+                font-size: 13px;
+            }
+
+            .services-grid, .why-grid, .gallery-grid, .videos-grid, .projects-grid {
+                gap: 12px;
+            }
+
+            .service-card, .why-item {
+                padding: 18px;
+            }
+
+            .service-card h3, .why-item h3 {
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+
+            .service-card p, .why-item p {
+                font-size: 13px;
+            }
+
+            .gallery-item {
+                height: 180px;
+            }
+
+            .project-image {
+                height: 200px;
+            }
+
+            .about-text h3 {
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+
+            .about-text p {
+                font-size: 13px;
+            }
+
+            .holi-banner {
+                padding: 20px 12px;
+            }
+
+            .holi-banner h2 {
+                font-size: 22px;
+                margin-bottom: 12px;
+            }
+
+            .holi-banner p {
+                font-size: 13px;
+            }
+
+            .footer-content {
+                gap: 15px;
+            }
+
+            .footer-column h3 {
+                font-size: 15px;
+                margin-bottom: 10px;
+            }
+
+            .footer-column ul li {
+                font-size: 12px;
+                margin-bottom: 6px;
+            }
+
+            .footer-bottom {
+                font-size: 11px;
+                padding-top: 15px;
+            }
+
+            nav ul li a {
+                padding: 12px 15px;
+                font-size: 14px;
+                min-height: 40px;
+            }
+
+            .booking-btn {
+                padding: 12px 20px;
+                font-size: 13px;
+                min-height: 44px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .section-container {
+                padding: 20px 10px;
+            }
+
+            .section-title {
+                font-size: 20px;
+            }
+
+            .hero {
+                height: 250px;
+            }
+
+            .hero-content h1 {
+                font-size: 20px;
+            }
+
+            .primary-btn, .secondary-btn {
+                padding: 9px 16px;
+                font-size: 11px;
+            }
+
+            .contact-form {
+                padding: 15px;
+            }
+
+            .footer-column h3 {
+                font-size: 14px;
             }
         }
     </style>
@@ -1037,19 +1650,26 @@
                 </div>
                 <span>PADM&BILL</span>
             </div>
-            <nav>
+            <nav id="navbar">
                 <ul>
                     <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#services">Services</a></li>
+                    <li><a href="weddings.html">Weddings</a></li>
+                    <li><a href="corporate.html">Corporate</a></li>
+                    <li><a href="parties.html">Parties</a></li>
+                    <li><a href="festivals.html">Festivals</a></li>
+                    <li><a href="brochure.html">Brochure</a></li>
                     <li><a href="#gallery">Gallery</a></li>
-                    <li><a href="#videos">Videos</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#tickets">Tickets</a></li>
                     <li><a href="#why-choose">Why Choose Us</a></li>
+                    <li><a href="#careers">Careers</a></li>
+                    <li><a href="#partners">Vendors</a></li>
                     <li><a href="#contact">Contact Us</a></li>
                 </ul>
             </nav>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </header>
 
@@ -1063,6 +1683,81 @@
             <div class="hero-buttons">
                 <button class="primary-btn" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Book Your Event</button>
                 <button class="secondary-btn" onclick="window.location.href='tel:6395279991'">Call Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOLI BANNER SECTION -->
+    <section style="background: linear-gradient(135deg, #ff6b9d 0%, #feca57 25%, #48dbfb 50%, #1dd1a1 75%, #ff9ff3 100%); padding: 50px 20px; text-align: center;">
+        <div class="section-container">
+            <div style="background: rgba(255,255,255,0.95); border-radius: 15px; padding: 40px; box-shadow: 0 15px 50px rgba(0,0,0,0.2);">
+                <h2 style="font-size: 44px; color: #d41f26; margin-bottom: 15px;">🎨 HOLI - Festival of Colors 🌈</h2>
+                <p style="font-size: 18px; color: #333; margin-bottom: 25px;">Celebrate the most vibrant festival with PADM&BILL</p>
+                
+                <img src="Gemini_Generated_Image_44uqrh44uqrh44uq (2).png" alt="Holi Festival Celebration" style="max-width: 350px; width: 100%; height: auto; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); margin: 20px 0;">
+                
+                <p style="font-size: 20px; font-weight: bold; color: #d41f26; margin: 25px 0;">Fill Your Lives with Rainbow of Joy & Happiness</p>
+                
+                <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                    <a href="festivals.html" style="background-color: #d41f26; color: white; padding: 14px 30px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; text-decoration: none; transition: all 0.3s;" onmouseover="this.style.backgroundColor='#a01620'" onmouseout="this.style.backgroundColor='#d41f26'">🎉 View Holi Packages</a>
+                    <button style="background-color: #48dbfb; color: #1a1a1a; padding: 14px 30px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; transition: all 0.3s;" onclick="window.location.href='tel:6395279991'" onmouseover="this.style.backgroundColor='#00a8e8'" onmouseout="this.style.backgroundColor='#48dbfb'">📞 Call for Special Offers</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LATEST UPDATES SECTION -->
+    <section style="background: linear-gradient(135deg, #fff9e6 0%, #fffef2 100%); padding: 50px 20px; border-top: 5px solid #d41f26;">
+        <div class="section-container">
+            <div style="background: white; border-radius: 15px; padding: 40px; box-shadow: 0 10px 40px rgba(212,31,38,0.15); border-left: 5px solid #d41f26;">
+                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                    <span style="font-size: 40px;">📢</span>
+                    <h2 style="font-size: 32px; color: #d41f26; margin: 0;">Latest Updates</h2>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
+                    <!-- Update 1 -->
+                    <div style="background: linear-gradient(135deg, #fff5f5 0%, #ffe8e8 100%); padding: 25px; border-radius: 10px; border-left: 4px solid #d41f26;">
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                            <span style="font-size: 24px;">🎨</span>
+                            <h3 style="color: #d41f26; margin: 0; font-size: 18px;">Puja Divine Decore Brochure</h3>
+                        </div>
+                        <p style="color: #666; margin: 0; font-size: 14px; line-height: 1.6;">
+                            ✨ NEW - Our premium Puja Divine Decore brochure is now available! Explore divine decoration packages and sacred themes. <a href="brochure.html" style="color: #d41f26; font-weight: bold; text-decoration: none;">Download now →</a>
+                        </p>
+                        <div style="margin-top: 12px; font-size: 12px; color: #999;">📅 February 2026</div>
+                    </div>
+
+                    <!-- Update 2 -->
+                    <div style="background: linear-gradient(135deg, #e8f5ff 0%, #e0f2ff 100%); padding: 25px; border-radius: 10px; border-left: 4px solid #48dbfb;">
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                            <span style="font-size: 24px;">🌈</span>
+                            <h3 style="color: #48dbfb; margin: 0; font-size: 18px;">Holi Festival Packages</h3>
+                        </div>
+                        <p style="color: #666; margin: 0; font-size: 14px; line-height: 1.6;">
+                            🎉 Special Holi celebration packages launched! Get amazing offers on colorful decorations and festival events. <a href="festivals.html" style="color: #48dbfb; font-weight: bold; text-decoration: none;">View packages →</a>
+                        </p>
+                        <div style="margin-top: 12px; font-size: 12px; color: #999;">📅 February 2026</div>
+                    </div>
+
+                    <!-- Update 3 -->
+                    <div style="background: linear-gradient(135deg, #f0e8ff 0%, #e8deff 100%); padding: 25px; border-radius: 10px; border-left: 4px solid #a29bfe;">
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                            <span style="font-size: 24px;">💍</span>
+                            <h3 style="color: #a29bfe; margin: 0; font-size: 18px;">Wedding Season Special</h3>
+                        </div>
+                        <p style="color: #666; margin: 0; font-size: 14px; line-height: 1.6;">
+                            💐 Exclusive wedding packages now available! Book your dream wedding with our premium services. <a href="weddings.html" style="color: #a29bfe; font-weight: bold; text-decoration: none;">Explore weddings →</a>
+                        </p>
+                        <div style="margin-top: 12px; font-size: 12px; color: #999;">📅 February 2026</div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 30px; padding-top: 25px; border-top: 2px solid #f0f0f0; background: linear-gradient(135deg, #fffef2 0%, #fff9e6 100%); width: calc(100% + 0px); border-radius: 0 0 15px 15px; padding: 25px 20px;">
+                    <p style="color: #666; margin: 0; text-align: center; font-size: 14px;">
+                        ℹ️ Want to stay updated? <a href="index.html#contact" style="color: #d41f26; font-weight: bold; text-decoration: none;">Get in touch</a> to receive announcements and special offers!
+                    </p>
+                </div>
             </div>
         </div>
     </section>
@@ -1260,7 +1955,7 @@
             <h2 class="section-title">Tickets & <span>Venue</span></h2>
             <div class="tickets-content">
                 <div class="tickets-poster">
-                    <img src="VENUE- (REVEALED ON TICKET) AVAILABLE ON ALL EVENTS  BOOKMYSHOW (1).png" alt="Event Poster - Venue Revealed on Ticket" style="width: 100%; height: auto; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); display: block;">
+                    <img src="hiring-banner.png" alt="Event poster displaying youth registration and volunteers" style="width: 100%; height: auto; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); display: block;">
                 </div>
 
                 <div class="tickets-info">
@@ -1302,6 +1997,61 @@
                         <button class="booking-btn secondary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})" style="flex: 1;">Contact Us for More Info</button>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hiring & Careers Section -->
+    <section id="careers">
+        <div class="section-container">
+            <h2 class="section-title">Join Our <span>Team</span></h2>
+            <div class="hiring-grid">
+                <div class="hiring-poster">
+                    <img src="hiring-banner.png" alt="Hiring youth for project-based work and volunteers" />
+                </div>
+                <div class="hiring-info">
+                    <h3>We are hiring youth, volunteers and event professionals</h3>
+                    <p>PADM&BILL is expanding its event management team for upcoming projects in Dehradun and across Uttarakhand. We welcome motivated individuals, freelancers, and agencies ready to deliver premium event execution.</p>
+                    <ul class="hiring-list">
+                        <li>Project-based roles for youth & volunteers</li>
+                        <li>Event planning, coordination, logistics, and production support</li>
+                        <li>Opportunities for skilled professionals and aspiring event managers</li>
+                        <li>Flexible assignments with mentorship, training, and certification</li>
+                    </ul>
+                    <button class="booking-btn primary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Apply Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vendors & Customers Section -->
+    <section id="partners">
+        <div class="section-container">
+            <h2 class="section-title">Vendors & <span>Customers</span></h2>
+            <div class="partners-grid">
+                <div class="partner-card">
+                    <h3>Trusted Vendors</h3>
+                    <p>Partner vendors receive clear briefs, reliable coordination, and timely payments for every event.</p>
+                    <ul>
+                        <li>Decorators & Florists</li>
+                        <li>Catering & F&B Partners</li>
+                        <li>Sound, Lighting & AV Teams</li>
+                        <li>Entertainment & Talent Agencies</li>
+                    </ul>
+                </div>
+                <div class="partner-card">
+                    <h3>Professional Customers</h3>
+                    <p>We serve individuals and businesses who need polished, memorable event experiences.</p>
+                    <ul>
+                        <li>Wedding couples & families</li>
+                        <li>Corporate teams & seminar hosts</li>
+                        <li>Festival organizers & venue managers</li>
+                        <li>Private party planners & community leaders</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="partners-note">
+                <p>PADM&BILL works with respected vendors and professional clients who expect exceptional service, creative execution, and seamless event delivery.</p>
             </div>
         </div>
     </section>
@@ -1510,7 +2260,10 @@
                     <li><a href="#about">About Us</a></li>
                     <li><a href="#services">Our Services</a></li>
                     <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="brochure.html">Brochure</a></li>
                     <li><a href="#why-choose">Why Choose Us</a></li>
+                    <li><a href="#careers">Careers</a></li>
+                    <li><a href="#partners">Vendors</a></li>
                 </ul>
             </div>
             <div class="footer-column">
@@ -1538,6 +2291,24 @@
     </footer>
 
     <script>
+        // Mobile hamburger menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navbar = document.getElementById('navbar');
+
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navbar.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        const navLinks = navbar.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                navbar.classList.remove('active');
+            });
+        });
+
         function handleSubmit(event) {
             event.preventDefault();
             alert('Thank you for your inquiry! We will contact you soon.');

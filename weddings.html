@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Events - PADM&BILL</title>
+    <meta name="description" content="Professional wedding planning and management in Dehradun. Make your special day unforgettable with PADM&BILL." />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-top {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 10px 0;
+            font-size: 14px;
+        }
+
+        .header-top-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            flex-wrap: wrap;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 6px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: #d41f26;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #d41f26;
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #d41f26;
+        }
+
+        .cta-button {
+            background-color: #d41f26;
+            color: white;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            min-height: 44px;
+        }
+
+        .cta-button:hover {
+            background-color: #a01620;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(212,31,38,0.4)), url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&h=600&fit=crop') center/cover;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            font-size: 42px;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #1a1a1a;
+        }
+
+        .section-title span {
+            color: #d41f26;
+        }
+
+        .wedding-packages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .package {
+            background: white;
+            border: 2px solid #f0f0f0;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .package:hover {
+            border-color: #d41f26;
+            box-shadow: 0 10px 30px rgba(212,31,38,0.2);
+            transform: translateY(-5px);
+        }
+
+        .package h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #d41f26;
+        }
+
+        .package ul {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .package ul li {
+            padding: 8px 0;
+            color: #555;
+        }
+
+        .package ul li:before {
+            content: "✓ ";
+            color: #d41f26;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .primary-btn {
+            background-color: #d41f26;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            min-height: 44px;
+            font-size: 16px;
+        }
+
+        .primary-btn:hover {
+            background-color: #a01620;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 1024px) {
+            .section-container {
+                padding: 50px 30px;
+            }
+
+            .nav-container {
+                padding: 12px 30px;
+                gap: 15px;
+            }
+
+            .header-top-content {
+                flex-direction: column;
+                gap: 10px;
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .header-top {
+                display: none;
+            }
+
+            .nav-container {
+                padding: 8px 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            nav {
+                position: fixed;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                display: none;
+                max-height: calc(100vh - 60px);
+                overflow-y: auto;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                z-index: 99;
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            nav ul {
+                flex-direction: column;
+                width: 100%;
+                gap: 0;
+                padding: 15px 0;
+            }
+
+            nav ul li {
+                width: 100%;
+                border-bottom: 1px solid #f0f0f0;
+            }
+
+            nav ul li a {
+                display: block;
+                padding: 12px 18px;
+                min-height: 40px;
+                display: flex;
+                align-items: center;
+                font-size: 14px;
+            }
+
+            .logo {
+                font-size: 18px;
+            }
+
+            .nav-container {
+                padding: 8px 12px;
+                gap: 8px;
+            }
+
+            .header-top {
+                display: none;
+            }
+
+            .header-top-content {
+                display: none;
+            }
+
+            .header-top-left {
+                display: none;
+            }
+
+            .header-top-right {
+                display: none;
+            }
+
+            .cta-button {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero {
+                height: 350px;
+                padding: 20px;
+            }
+
+            .section-container {
+                padding: 40px 20px;
+            }
+
+            .section-title {
+                font-size: 28px;
+                margin-bottom: 30px;
+            }
+
+            .wedding-packages {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .package {
+                padding: 25px 20px;
+            }
+
+            .primary-btn {
+                padding: 12px 25px;
+                font-size: 14px;
+                min-height: 44px;
+                width: 100%;
+            }
+
+            .cta-button {
+                padding: 10px 20px;
+                font-size: 12px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .header-top {
+                display: none;
+            }
+
+            .header-top-content {
+                display: none;
+            }
+
+            .nav-container {
+                padding: 6px 10px;
+            }
+
+            .logo {
+                font-size: 16px;
+                gap: 5px;
+            }
+
+            .section-container {
+                padding: 30px 15px;
+            }
+
+            .section-title {
+                font-size: 24px;
+                margin-bottom: 25px;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero {
+                height: 300px;
+                padding: 15px;
+            }
+
+            .primary-btn {
+                padding: 11px 22px;
+                font-size: 13px;
+            }
+
+            .cta-button {
+                padding: 10px 15px;
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-top {
+                display: none;
+            }
+
+            .header-top-content {
+                display: none;
+            }
+
+            .header-top-left span, .header-top-right {
+                display: none;
+            }
+
+            .logo {
+                font-size: 15px;
+                gap: 4px;
+            }
+
+            .nav-container {
+                padding: 6px 8px;
+            }
+
+            .hamburger span {
+                width: 20px;
+                height: 2.5px;
+            }
+
+            nav ul li a {
+                padding: 12px 15px;
+                font-size: 14px;
+                min-height: 40px;
+            }
+
+            .section-container {
+                padding: 25px 12px;
+            }
+
+            .section-title {
+                font-size: 22px;
+                margin-bottom: 20px;
+            }
+
+            .hero h1 {
+                font-size: 24px;
+                margin-bottom: 10px;
+            }
+
+            .hero p {
+                font-size: 13px;
+            }
+
+            .hero {
+                height: 280px;
+                padding: 10px;
+            }
+
+            .primary-btn {
+                padding: 10px 18px;
+                font-size: 12px;
+                min-height: 40px;
+            }
+
+            .cta-button {
+                padding: 8px 12px;
+                font-size: 11px;
+                min-height: 40px;
+            }
+
+            .wedding-packages {
+                gap: 12px;
+            }
+
+            .package {
+                padding: 18px;
+            }
+
+            .package h3 {
+                font-size: 16px;
+                margin-bottom: 12px;
+            }
+
+            .package p {
+                font-size: 12px;
+            }
+
+            .package ul li {
+                padding: 6px 0;
+                font-size: 12px;
+            }
+
+            .footer-content {
+                gap: 15px;
+            }
+
+            .footer-column h3 {
+                font-size: 15px;
+                margin-bottom: 10px;
+            }
+
+            .footer-column ul li {
+                font-size: 12px;
+                margin-bottom: 6px;
+            }
+
+            nav ul li a {
+                padding: 12px 15px;
+                font-size: 14px;
+                min-height: 40px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .section-container {
+                padding: 20px 10px;
+            }
+
+            .section-title {
+                font-size: 20px;
+            }
+
+            .hero {
+                height: 250px;
+            }
+
+            .hero h1 {
+                font-size: 20px;
+            }
+
+            .primary-btn {
+                padding: 9px 16px;
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-top">
+            <div class="header-top-content">
+                <div class="header-top-left">
+                    <span>📞 6395279991 | 6395600361</span>
+                    <span>✉️ padmbill1012@gmail.com</span>
+                </div>
+                <div class="header-top-right">
+                    <button class="cta-button" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Get a Quote</button>
+                </div>
+            </div>
+        </div>
+        <div class="nav-container">
+            <a href="index.html" class="logo">🎭 PADM&BILL</a>
+            <nav id="navbar">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="weddings.html">Weddings</a></li>
+                    <li><a href="corporate.html">Corporate</a></li>
+                    <li><a href="parties.html">Parties</a></li>
+                    <li><a href="festivals.html">Festivals</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div>
+            <h1>💍 Wedding Events</h1>
+            <p style="color: white; font-size: 20px; text-shadow: 2px 2px 10px rgba(0,0,0,0.5);">Make Your Special Day Unforgettable</p>
+        </div>
+    </section>
+
+    <!-- Wedding Packages Section -->
+    <section>
+        <div class="section-container">
+            <h2 class="section-title">Wedding <span>Packages</span></h2>
+            
+            <div class="wedding-packages">
+                <div class="package">
+                    <h3>💐 Classic Package</h3>
+                    <ul>
+                        <li>Venue decoration</li>
+                        <li>Catering arrangement</li>
+                        <li>Photography</li>
+                        <li>Sound & lighting</li>
+                        <li>Guest accommodation coordination</li>
+                        <li>Day-of coordination</li>
+                    </ul>
+                    <button class="primary-btn">Inquire Now</button>
+                </div>
+
+                <div class="package">
+                    <h3>✨ Premium Package</h3>
+                    <ul>
+                        <li>Complete event planning</li>
+                        <li>Venue selection & booking</li>
+                        <li>Professional photography & videography</li>
+                        <li>Catering with premium menu</li>
+                        <li>Elaborate decoration</li>
+                        <li>Live entertainment</li>
+                        <li>Destination wedding coordination</li>
+                    </ul>
+                    <button class="primary-btn">Inquire Now</button>
+                </div>
+
+                <div class="package">
+                    <h3>👑 Luxury Package</h3>
+                    <ul>
+                        <li>Complete luxury wedding planning</li>
+                        <li>Premium venue & guest accommodations</li>
+                        <li>Professional 4K videography & drone coverage</li>
+                        <li>Multi-course gourmet catering</li>
+                        <li>Extravagant themes & decorations</li>
+                        <li>Celebrity entertainment</li>
+                        <li>International destination planning</li>
+                    </ul>
+                    <button class="primary-btn">Inquire Now</button>
+                </div>
+            </div>
+
+            <h2 class="section-title" style="margin-top: 60px;">Services <span>Included</span></h2>
+            
+            <div style="background: #f9f9f9; padding: 40px; border-radius: 10px;">
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <h3 style="margin-bottom: 20px; color: #d41f26;">🎊 Pre-Wedding Events</h3>
+                    <ul style="list-style: none; margin-bottom: 30px;">
+                        <li style="margin-bottom: 10px;">✓ Mehendi Ceremony Planning</li>
+                        <li style="margin-bottom: 10px;">✓ Haldi Celebration</li>
+                        <li style="margin-bottom: 10px;">✓ Sangeet Night Organization</li>
+                        <li style="margin-bottom: 10px;">✓ Engagement Party Planning</li>
+                    </ul>
+
+                    <h3 style="margin-bottom: 20px; color: #d41f26;">💒 Wedding Day Services</h3>
+                    <ul style="list-style: none; margin-bottom: 30px;">
+                        <li style="margin-bottom: 10px;">✓ Venue Management</li>
+                        <li style="margin-bottom: 10px;">✓ Guest Reception & Coordination</li>
+                        <li style="margin-bottom: 10px;">✓ Catering Supervision</li>
+                        <li style="margin-bottom: 10px;">✓ Timeline & Schedule Management</li>
+                    </ul>
+
+                    <h3 style="margin-bottom: 20px; color: #d41f26;">🎉 Post-Wedding Events</h3>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 10px;">✓ Reception Party Planning</li>
+                        <li style="margin-bottom: 10px;">✓ Farewell Dinner Organization</li>
+                        <li style="margin-bottom: 10px;">✓ Wedding Album & Video Delivery</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#gallery">Gallery</a></li>
+                    <li><a href="index.html#why-choose">Why Choose Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="weddings.html">Wedding Events</a></li>
+                    <li><a href="corporate.html">Corporate Events</a></li>
+                    <li><a href="parties.html">Private Parties</a></li>
+                    <li><a href="festivals.html">Festival Events</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="tel:6395279991">📞 6395279991</a></li>
+                    <li><a href="tel:6395600361">📞 6395600361</a></li>
+                    <li><a href="mailto:padmbill1012@gmail.com">✉️ padmbill1012@gmail.com</a></li>
+                    <li>Sanskriti Lok Colony,<br>Morowala, Brahmanwala,<br>Dehradun, Uttarakhand – 248001</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 PADM&BILL (OPC) PRIVATE LIMITED. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile hamburger menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navbar = document.getElementById('navbar');
+
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navbar.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        const navLinks = navbar.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                navbar.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
