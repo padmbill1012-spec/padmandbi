@@ -15,13 +15,32 @@ Professional event management website for PADM&BILL, featuring weddings, corpora
 ```
 /
 ├── index.html                    # Main website file with all sections
-├── sitemap.xml                   # XML sitemap for search engines
-├── robots.txt                    # Robots configuration
-├── .gitignore                    # Git ignore file
-└── VENUE- (...).png              # Event poster image
+├── brochure.html                  # Brochure and registration page
+├── privacy.html                   # Privacy policy page
+├── sitemap.xml                    # XML sitemap for search engines
+├── robots.txt                     # Robots configuration
+├── .gitignore                     # Git ignore file
+└── VENUE- (...).png               # Event poster image
 ```
 
 ## Deployment Instructions
+
+### Form Backend Setup
+This site now supports employee/vendor registration via a small backend service.
+
+The backend code lives in `form-backend/` and accepts POST requests at `/submit`.
+If a backend is not available, the page falls back to FormSubmit email delivery.
+
+To run the backend locally:
+
+```bash
+cd form-backend
+npm install
+npm start
+```
+
+Then deploy this backend to a Node.js host such as Render, Railway, or Vercel.
+Update the form endpoint in `brochure.html` if necessary.
 
 ### Step 1: Create GitHub Repository
 1. Go to https://github.com/new
