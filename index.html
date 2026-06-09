@@ -34,7 +34,7 @@
                     "@type": "Organization",
                     "name": "PADM&BILL (OPC) PRIVATE LIMITED",
                     "url": "https://padmandbill.com/",
-                    "logo": "https://padmandbill.com/logo.png",
+                    "logo": "https://padmandbill.com/logo.png?v=20260609",
                     "sameAs": [
                         "https://www.facebook.com/padmbill1012",
                         "https://www.instagram.com/padm_bill_1012/"
@@ -158,12 +158,22 @@
         }
 
         .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            display: block;
+        }
+
+        .logo span {
             font-size: 24px;
             font-weight: bold;
             color: #d41f26;
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
 
         .logo-symbol {
@@ -1622,34 +1632,10 @@
             </div>
         </div>
         <div class="nav-container">
-            <div class="logo">
-                <div class="logo-symbol">
-                    <div class="lotus-sketch">
-                        <div class="lotus-petal large"></div>
-                        <div class="lotus-petal large"></div>
-                        <div class="lotus-petal large"></div>
-                        <div class="lotus-petal large"></div>
-                        <div class="lotus-petal large"></div>
-                        <div class="lotus-petal large"></div>
-                        <div class="lotus-petal large"></div>
-                        <div class="lotus-petal large"></div>
-                        <div class="lotus-petal medium"></div>
-                        <div class="lotus-petal medium"></div>
-                        <div class="lotus-petal medium"></div>
-                        <div class="lotus-petal medium"></div>
-                        <div class="lotus-petal medium"></div>
-                        <div class="lotus-petal medium"></div>
-                        <div class="lotus-petal medium"></div>
-                        <div class="lotus-petal medium"></div>
-                        <div class="lotus-petal small"></div>
-                        <div class="lotus-petal small"></div>
-                        <div class="lotus-petal small"></div>
-                        <div class="lotus-petal small"></div>
-                        <div class="lotus-center"></div>
-                    </div>
-                </div>
+            <a href="index.html" class="logo">
+                <img src="logo.png?v=20260609" alt="PADM&BILL logo">
                 <span>PADM&BILL</span>
-            </div>
+            </a>
             <nav id="navbar">
                 <ul>
                     <li><a href="#home">Home</a></li>

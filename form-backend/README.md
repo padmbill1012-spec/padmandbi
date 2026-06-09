@@ -1,6 +1,7 @@
 Simple PADM&BILL Form Backend
 
 This tiny Express server accepts POST requests at `/submit` and saves submissions to `submissions.json`.
+It also exposes `/submissions` for JSON output and `/admin` for a simple dashboard view of all registrations.
 
 Usage:
 
@@ -26,4 +27,5 @@ Deployment suggestions:
 
 Notes:
 - This server stores submissions locally in `submissions.json`. For production, replace storage with a database and secure the endpoint.
+- The `/admin` dashboard is intentionally simple; add authentication before exposing it publicly.
 - Do not expose this server to the open internet without adding authentication and rate-limiting.
