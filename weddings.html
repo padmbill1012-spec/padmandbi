@@ -330,6 +330,70 @@
             margin-top: 0;
         }
 
+        .food-image-row {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+            margin: 0 0 42px;
+        }
+
+        .food-image-row figure {
+            margin: 0;
+            position: relative;
+            min-width: 0;
+        }
+
+        .food-image-row img {
+            width: 100%;
+            height: 190px;
+            display: block;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(65, 36, 20, 0.14);
+            background: #eadbc9;
+        }
+
+        .food-image-row figcaption {
+            position: absolute;
+            left: 12px;
+            right: 12px;
+            bottom: 10px;
+            padding: 7px 9px;
+            border-radius: 4px;
+            background: rgba(26, 26, 26, 0.72);
+            color: #fff;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .menu-detail-section {
+            background: #fff;
+        }
+
+        .menu-detail-section:nth-of-type(even) {
+            background: #faf7f2;
+        }
+
+        .menu-detail-card {
+            border-top-color: #b8863b;
+        }
+
+        .menu-detail-card h3 {
+            color: #9a6b22;
+        }
+
+        @media (max-width: 768px) {
+            .food-image-row {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 10px;
+                margin-bottom: 30px;
+            }
+
+            .food-image-row img {
+                height: 145px;
+            }
+        }
+
         @media (max-width: 1024px) {
             .section-container {
                 padding: 50px 30px;
@@ -803,6 +867,25 @@
             <h2 class="section-title">Wedding <span>Menu Options</span></h2>
             <p class="content-intro">Thoughtfully planned menus bring together regional Indian favorites and polished Western courses, with live stations and service styles tailored to your celebration.</p>
 
+            <div class="food-image-row" aria-label="Wedding food highlights">
+                <figure>
+                    <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=700&amp;h=420&amp;fit=crop" alt="Traditional Indian wedding dishes served in copper bowls" loading="lazy">
+                    <figcaption>Indian Wedding Feast</figcaption>
+                </figure>
+                <figure>
+                    <img src="https://images.unsplash.com/photo-1547592180-85f173990554?w=700&amp;h=420&amp;fit=crop" alt="Colorful plated food for a wedding buffet" loading="lazy">
+                    <figcaption>Global Buffet Selection</figcaption>
+                </figure>
+                <figure>
+                    <img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?w=700&amp;h=420&amp;fit=crop" alt="Fresh dishes arranged for a wedding dining table" loading="lazy">
+                    <figcaption>Live Counters &amp; Starters</figcaption>
+                </figure>
+                <figure>
+                    <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=700&amp;h=420&amp;fit=crop" alt="Dessert selection prepared for a wedding celebration" loading="lazy">
+                    <figcaption>Dessert &amp; Sweet Bites</figcaption>
+                </figure>
+            </div>
+
             <div class="content-grid">
                 <article class="content-card">
                     <img class="content-card-visual" src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=900&amp;h=420&amp;fit=crop" alt="Indian wedding food and traditional catering presentation" loading="lazy">
@@ -872,6 +955,147 @@
                     <ul>
                         <li><strong>Long Banquet Tables:</strong> Grand, uninterrupted linear wooden tables with low-profile floral runners and ambient candlelight for an intimate, communal European dining aesthetic.</li>
                         <li><strong>Cocktail &amp; Lounge Pockets:</strong> High cocktail tables interspersed with modular velvet sofas and low coffee tables near the bar to encourage fluid guest mingling.</li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wedding Drinks Menu Section -->
+    <section class="menu-detail-section">
+        <div class="section-container">
+            <h2 class="section-title">Comprehensive &amp; Versatile <span>Wedding Drinks Menu</span></h2>
+            <div class="content-grid">
+                <article class="content-card menu-detail-card">
+                    <h3>Traditional Desi Coolers &amp; Energy Refreshers</h3>
+                    <ul>
+                        <li><strong>Chilled Sattu Drinks:</strong> Roasted chana sattu in sweet variations with jaggery, lemon, and mint, or salted with roasted cumin and black salt.</li>
+                        <li><strong>Fresh Shakes &amp; Smoothies:</strong> Seasonal mango shakes made with fresh pulp, banana-caramel smoothies, and mixed-fruit smoothies.</li>
+                        <li><strong>Natural Juices:</strong> Chilled watermelon juice, fresh sweet lime mosambi juice, and tender coconut water served straight from the shell.</li>
+                        <li><strong>Everyday Classics:</strong> Salted or sweet chaas seasoned with coriander, Shikanji lemonade, and spiced Jaljeera.</li>
+                    </ul>
+                </article>
+                <article class="content-card menu-detail-card">
+                    <h3>Trendy Mocktails &amp; Fruit Bar</h3>
+                    <ul>
+                        <li><strong>Mint Mojito Station:</strong> Virgin mojitos muddled with mint, lime, sugar cane, and club soda, with strawberry or passionfruit purees.</li>
+                        <li><strong>Virgin Sangria:</strong> Mixed fruit juices, chopped seasonal fruits, cinnamon, and ginger ale.</li>
+                        <li><strong>Sunset Punch:</strong> Layered orange juice, cranberry juice, and grenadine.</li>
+                        <li><strong>Cucumber-Basil Cooler:</strong> Fresh cucumber ribbons, sweet basil, lime juice, and sparkling soda water.</li>
+                    </ul>
+                </article>
+                <article class="content-card menu-detail-card">
+                    <h3>Carbonated &amp; Fizzy Soda Bar</h3>
+                    <ul>
+                        <li><strong>Classic Fizzes:</strong> Chilled Coca-Cola, Thums Up, Sprite, Fanta, and Diet Coke.</li>
+                        <li><strong>Artisanal Fizzy Flavors:</strong> Ginger Ale, Tonic Water, Bitter Lemon, and premium bottled mixers.</li>
+                        <li><strong>Desi Banta/Soda Cart:</strong> Street-style lemon sodas in pressurized glass bottles with black salt and chaat masala, in Jeera, Masala, and Kala Khatta flavors.</li>
+                    </ul>
+                </article>
+                <article class="content-card menu-detail-card">
+                    <h3>Hot Beverage &amp; Interactive Stations</h3>
+                    <ul>
+                        <li><strong>Kulhad Chai &amp; Filter Coffee Bar:</strong> Cardamom and ginger tea with loose leaves alongside frothy South Indian filter coffee, served in clay kulhads.</li>
+                        <li><strong>Gourmet Coffee Cart:</strong> Barista-style iced lattes, hot cappuccinos, and vanilla, hazelnut, or caramel syrups.</li>
+                    </ul>
+                    <h4>On-Demand Guest Additions</h4>
+                    <ul>
+                        <li><strong>Custom Mocktail Barista Station:</strong> Guests choose their fruit base, syrup, and herbs for a custom mocktail.</li>
+                        <li><strong>Detox &amp; Warm Water Station:</strong> Lemon-cucumber-mint and strawberry-basil spa waters, plus warm boiled water for elderly guests and winter setups.</li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Indian Wedding Buffet Section -->
+    <section class="menu-detail-section">
+        <div class="section-container">
+            <h2 class="section-title">Indian Wedding Buffet <span>Menu</span></h2>
+            <p class="content-intro">An affordable, high-demand buffet built around familiar favorites, generous portions, and interactive counters guests love.</p>
+            <div class="content-grid">
+                <article class="content-card menu-detail-card">
+                    <h3>Welcome Drinks &amp; Starters</h3>
+                    <h4>Traditional &amp; Energy Refreshers</h4>
+                    <ul>
+                        <li>Chilled roasted chana Sattu drink, sweet or salted.</li>
+                        <li>Thick seasonal Mango shake and fresh Watermelon juice.</li>
+                        <li>Spiced salted Chaas, fresh lime Shikanji, Jaljeera, and sweet Lassi.</li>
+                    </ul>
+                    <h4>Vegetarian Starters</h4>
+                    <ul>
+                        <li>Paneer Tikka with charred onions and capsicum.</li>
+                        <li>Crispy Corn Salt &amp; Pepper, vegetable spring rolls with sweet chilli dip, and Dahi Ke Kebabs.</li>
+                    </ul>
+                    <h4>Non-Vegetarian Starters</h4>
+                    <ul>
+                        <li>Murgh Malai Tikka or Chicken Tikka, Amritsari Fish Fry, Chicken Seekh Kebabs, and crispy chicken drumsticks.</li>
+                    </ul>
+                </article>
+                <article class="content-card menu-detail-card">
+                    <h3>Live Counters &amp; Interactive Stations</h3>
+                    <ul>
+                        <li><strong>Chaat Station:</strong> Golgappe with multi-flavored waters, Dahi Bhalla, and Papdi Chaat made fresh on-site.</li>
+                        <li><strong>Tawa &amp; Kulcha Counter:</strong> Fresh Amritsari Kulchas baked in tandoors with hot Chole and live tawa vegetables.</li>
+                        <li><strong>South Indian Dosa Bar:</strong> Crispy Dosas made live with potato masala and fresh coconut chutney.</li>
+                        <li><strong>Kulhad Pizza Station:</strong> Single-serve clay pots with bubbling mozzarella, corn, capsicum, and spiced paneer or chicken.</li>
+                    </ul>
+                    <h3>Main Course</h3>
+                    <h4>Vegetarian Mains</h4>
+                    <ul>
+                        <li>Overnight Dal Makhani, Paneer Lababdar or Mattar Paneer, Dum Aloo or seasonal Mix Veg Curry, and Yellow Dal Tadka.</li>
+                    </ul>
+                    <h4>Non-Vegetarian Mains</h4>
+                    <ul>
+                        <li>Butter Chicken, Chicken Curry or Bhuna Gosht, and Coastal Fish Curry.</li>
+                    </ul>
+                </article>
+                <article class="content-card menu-detail-card">
+                    <h3>Breads, Rice &amp; Accompaniments</h3>
+                    <ul>
+                        <li><strong>Assorted Indian Breads:</strong> Butter Naan, Tandoori Roti, and Lachha Paratha.</li>
+                        <li><strong>Biryani:</strong> Hyderabadi Veg Dum Biryani and Chicken Dum Biryani.</li>
+                        <li><strong>Accompaniments:</strong> Steamed Jeera Rice, Burani Raita, green garden salad, and papad.</li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Western Global Buffet and Desserts Section -->
+    <section class="menu-detail-section">
+        <div class="section-container">
+            <h2 class="section-title">Western, Global &amp; <span>Dessert Menus</span></h2>
+            <div class="content-grid">
+                <article class="content-card menu-detail-card">
+                    <h3>Western &amp; Global Buffet</h3>
+                    <h4>Starters &amp; Salad Bar</h4>
+                    <ul>
+                        <li><strong>Appetizers:</strong> Bruschetta Bar with tomatoes, basil, and olive oil; Caprese Skewers; garlic and herb cheese bread; and honey-glazed chicken skewers.</li>
+                        <li><strong>Salad Bar:</strong> Classic Caesar Salad with croutons and fresh Green Garden Salad with lemon-herb dressing.</li>
+                    </ul>
+                    <h4>Main Course</h4>
+                    <ul>
+                        <li><strong>Vegetarian Mains:</strong> Baked Vegetable Lasagna, creamy white-sauce Penne or Macaroni with vegetables, and buttered herb corn and peas.</li>
+                        <li><strong>Non-Vegetarian Mains:</strong> Roast herb chicken breast, pan-seared local fish fillets, and sliced chicken sausages in barbecue glaze.</li>
+                        <li><strong>Sides:</strong> Garlic mashed potatoes and buttered garlic bread rolls.</li>
+                    </ul>
+                </article>
+                <article class="content-card menu-detail-card">
+                    <h3>Dessert &amp; Beverage Station</h3>
+                    <h4>Indian Mithai &amp; Traditional Sweets</h4>
+                    <ul>
+                        <li>Kaju Katli, Gulab Jamun, Rasgulla, live Jalebi with thick Rabri, and seasonal Gajar Ka Halwa or Moong Dal Halwa.</li>
+                        <li>Chilled Rasmalai and traditional Kulfi sticks from a display cart.</li>
+                    </ul>
+                    <h4>Kulhad Chai &amp; Specialty Coffee Bar</h4>
+                    <ul>
+                        <li>Piping hot Kulhad Chai and frothy coffee served in traditional clay cups with tea-time cookies and butter biscuits.</li>
+                    </ul>
+                    <h4>Western Desserts &amp; Late-Night Bites</h4>
+                    <ul>
+                        <li>Multi-tiered celebration cake, individual glass jar cakes, mini chocolate brownies, and vanilla cupcakes.</li>
+                        <li>Live waffles or hot churros with chocolate sauce, plus warm cookies served with chilled milk.</li>
                     </ul>
                 </article>
             </div>
