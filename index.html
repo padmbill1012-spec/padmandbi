@@ -779,6 +779,89 @@
         font-size: 16px;
         border: none;
         border-radius: 5px;
+
+        .wedding-details-section {
+            background: #faf7f2;
+        }
+
+        .wedding-details-intro {
+            max-width: 760px;
+            margin: -15px auto 35px;
+            text-align: center;
+            color: #666;
+        }
+
+        .wedding-details-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 28px;
+        }
+
+        .wedding-details-card {
+            background: #fff;
+            border-top: 4px solid #d41f26;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 8px 24px rgba(65, 36, 20, 0.08);
+        }
+
+        .wedding-details-card h3 {
+            color: #d41f26;
+            font-size: 25px;
+            margin-bottom: 22px;
+        }
+
+        .wedding-details-card h4 {
+            color: #1a1a1a;
+            font-size: 18px;
+            margin: 22px 0 8px;
+        }
+
+        .wedding-details-card h4:first-of-type {
+            margin-top: 0;
+        }
+
+        .wedding-details-card ul {
+            list-style: none;
+        }
+
+        .wedding-details-card li {
+            position: relative;
+            padding: 7px 0 7px 21px;
+            color: #555;
+        }
+
+        .wedding-details-card li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #d41f26;
+            font-size: 20px;
+            line-height: 1.2;
+        }
+
+        .wedding-layout-card {
+            border-top-color: #b8863b;
+        }
+
+        .wedding-layout-card h3 {
+            color: #9a6b22;
+        }
+
+        @media (max-width: 768px) {
+            .wedding-details-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .wedding-details-card {
+                padding: 22px 18px;
+            }
+
+            .wedding-details-card h3 {
+                font-size: 20px;
+            }
+        }
         cursor: pointer;
         font-weight: bold;
         transition: all 0.3s;
@@ -1733,7 +1816,7 @@
                             <h3 style="color: #a29bfe; margin: 0; font-size: 18px;">Wedding Season Special</h3>
                         </div>
                         <p style="color: #666; margin: 0; font-size: 14px; line-height: 1.6;">
-                            💐 Exclusive wedding packages now available! Book your dream wedding with our premium services. <a href="weddings.html" style="color: #a29bfe; font-weight: bold; text-decoration: none;">Explore weddings →</a>
+                            💐 Exclusive wedding packages now available, including curated Indian and Western menus plus ceremony and reception seating layouts. <a href="weddings.html" style="color: #a29bfe; font-weight: bold; text-decoration: none;">Explore weddings →</a>
                         </p>
                         <div style="margin-top: 12px; font-size: 12px; color: #999;">📅 February 2026</div>
                     </div>
@@ -1788,6 +1871,8 @@
                         <li>Decorations & Themes</li>
                         <li>Sound, Lights & DJ</li>
                         <li>Catering & Hospitality</li>
+                        <li>Indian & Western Menu Curation</li>
+                        <li>Ceremony & Reception Seating Layouts</li>
                     </ul>
                 </div>
 
@@ -2227,12 +2312,81 @@
                             <option value="Other">Other</option>
                         </select>
                     </div>
+                    <input type="text" id="contact-website" name="website" autocomplete="off" tabindex="-1" style="position:absolute; left:-9999px; top:0; width:1px; height:1px; opacity:0; pointer-events:none;" aria-hidden="true">
                     <div class="form-group">
                         <label for="message">Message</label>
                         <textarea id="message" name="message" required></textarea>
                     </div>
                     <button type="submit" class="submit-btn">Submit</button>
+                    <div id="contact-feedback" class="contact-feedback" aria-live="polite"></div>
                 </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wedding Menus and Seating Section -->
+    <section class="wedding-details-section">
+        <div class="section-container">
+            <h2 class="section-title">Wedding Menus <span>&amp; Seating</span></h2>
+            <p class="wedding-details-intro">Explore thoughtfully planned Indian and Western menus alongside seating layouts designed around your ceremony, reception, and guests.</p>
+
+            <div class="wedding-details-grid">
+                <article class="wedding-details-card">
+                    <h3>Indian Menu Options</h3>
+                    <h4>Vegetarian Highlights</h4>
+                    <ul>
+                        <li><strong>Interactive Live Stations:</strong> Amritsari Kulcha with Chole counters, live Tawa Chaat, and stone-ground Dosa bars with customized chutneys.</li>
+                        <li><strong>Gourmet Mains:</strong> Slow-cooked Dal Makhani, simmered overnight, Paneer Makhmali Tikka Masala, and Kashmiri Dum Aloo.</li>
+                        <li><strong>Regional Specialties:</strong> Rajasthani Gatte ki Sabzi or Gujarati Undhiyu served in traditional brass mini-vessels.</li>
+                    </ul>
+                    <h4>Non-Vegetarian Highlights</h4>
+                    <ul>
+                        <li><strong>Live Grills &amp; Kebabs:</strong> Charcoal-smoked Murgh Malai Tikka, Galouti Kebabs on micro-ulte tawa parathas, and Amritsari Fish Fry stations.</li>
+                        <li><strong>Heritage Mains:</strong> Rogan Josh, classic butter chicken, and slow-cooked Dum Lamb Biryani sealed with dough.</li>
+                        <li><strong>Coastal Additions:</strong> Goan Prawn Curry or Chicken Chettinad paired with appams or fragrant jeera rice.</li>
+                    </ul>
+                </article>
+
+                <article class="wedding-details-card">
+                    <h3>Western Menu Options</h3>
+                    <h4>Vegetarian Highlights</h4>
+                    <ul>
+                        <li><strong>Appetizers &amp; Small Plates:</strong> Artisanal burrata bars with heirloom tomatoes, truffle mushroom crostini, and wood-fired flatbreads with goat cheese and caramelized onions.</li>
+                        <li><strong>Plated or Buffet Mains:</strong> Butternut squash ravioli in sage brown butter sauce, seared wild-mushroom risotto, and cauliflower steaks with chimichurri and toasted pine nuts.</li>
+                    </ul>
+                    <h4>Non-Vegetarian Highlights</h4>
+                    <ul>
+                        <li><strong>Appetizers &amp; Small Plates:</strong> Prosciutto-wrapped melon, bacon-wrapped dates with balsamic glaze, and seared scallop spoons with lemon-herb butter.</li>
+                        <li><strong>Plated or Buffet Mains:</strong> Slow-roasted prime rib with red wine reduction, herb-crusted rack of lamb, and pan-seared Atlantic salmon with a dill-cream emulsion.</li>
+                    </ul>
+                </article>
+
+                <article class="wedding-details-card wedding-layout-card">
+                    <h3>Indian Wedding Seating Layouts</h3>
+                    <h4>The Ceremony Core: Mandap &amp; Ritual Zones</h4>
+                    <ul>
+                        <li><strong>Elders' Zone:</strong> Comfortable sofa-style seating in the front rows directly flanking or facing the mandap, keeping grandparents and senior relatives close to rituals.</li>
+                        <li><strong>Family-Side Balancing:</strong> Clear divisions for Ladwale and Ladkiwale blocks during sacred ceremonies, transitioning into blended seating for post-ceremony celebrations.</li>
+                    </ul>
+                    <h4>The Reception Layout</h4>
+                    <ul>
+                        <li><strong>The Elevated Couple's Stage:</strong> Ornate throne-style chairs or a floral couch on a central stage for high visibility, guest greetings, and photography.</li>
+                        <li><strong>Tiered Table Clustering:</strong> Large 8-to-10-seater round tables, with immediate family closest to the stage and extended relatives and friends arranged outward.</li>
+                    </ul>
+                </article>
+
+                <article class="wedding-details-card wedding-layout-card">
+                    <h3>Western Wedding Seating Layouts</h3>
+                    <h4>The Ceremony Layout</h4>
+                    <ul>
+                        <li><strong>Modern Minimalist Rows:</strong> Clean theatre-style chair rows with an open center aisle, floral aisle markers, or texture-rich ribbons instead of heavy bows.</li>
+                    </ul>
+                    <h4>The Reception Layout</h4>
+                    <ul>
+                        <li><strong>Long Banquet Tables:</strong> Uninterrupted linear wooden tables with low-profile floral runners and ambient candlelight for an intimate European dining aesthetic.</li>
+                        <li><strong>Cocktail &amp; Lounge Pockets:</strong> High cocktail tables interspersed with modular velvet sofas and low coffee tables near the bar for fluid guest mingling.</li>
+                    </ul>
+                </article>
             </div>
         </div>
     </section>
@@ -2295,10 +2449,48 @@
             });
         });
 
-        function handleSubmit(event) {
+        function showContactFeedback(message, isError = false) {
+            const feedback = document.getElementById('contact-feedback');
+            if (!feedback) return;
+            feedback.textContent = message;
+            feedback.style.color = isError ? '#b91c1c' : '#065f46';
+            feedback.style.backgroundColor = isError ? '#fee2e2' : '#dcfce7';
+            feedback.style.border = isError ? '1px solid #fca5a5' : '1px solid #4ade80';
+            feedback.style.padding = '12px';
+            feedback.style.borderRadius = '8px';
+            feedback.style.marginTop = '16px';
+        }
+
+        async function handleSubmit(event) {
             event.preventDefault();
-            alert('Thank you for your inquiry! We will contact you soon.');
-            event.target.reset();
+            const form = event.target;
+            const payload = {
+                name: form.name.value.trim(),
+                phone: form.phone.value.trim(),
+                email: form.email.value.trim(),
+                eventType: form['event-type'].value,
+                message: form.message.value.trim(),
+                website: form.website ? form.website.value.trim() : ''
+            };
+
+            try {
+                const response = await fetch('/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const result = await response.json();
+
+                if (!response.ok || !result.ok) {
+                    throw new Error(result.message || 'Failed to submit message');
+                }
+
+                showContactFeedback('Thank you! Your request has been recorded and sent. We will respond quickly.', false);
+                form.reset();
+            } catch (error) {
+                console.error('Contact form submit failed:', error);
+                showContactFeedback('Unable to save your request right now. Please try again later.', true);
+            }
         }
     </script>
 </body>

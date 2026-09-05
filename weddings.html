@@ -244,6 +244,82 @@
             transform: translateY(-2px);
         }
 
+        .wedding-content-section {
+            background: #faf7f2;
+        }
+
+        .content-intro {
+            max-width: 760px;
+            margin: -15px auto 35px;
+            text-align: center;
+            color: #666;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 28px;
+        }
+
+        .content-card {
+            background: #fff;
+            border-top: 4px solid #d41f26;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 8px 24px rgba(65, 36, 20, 0.08);
+        }
+
+        .content-card h3 {
+            color: #d41f26;
+            font-size: 25px;
+            margin-bottom: 22px;
+        }
+
+        .content-card h4 {
+            color: #1a1a1a;
+            font-size: 18px;
+            margin: 22px 0 8px;
+        }
+
+        .content-card h4:first-of-type {
+            margin-top: 0;
+        }
+
+        .content-card ul {
+            list-style: none;
+        }
+
+        .content-card li {
+            position: relative;
+            padding: 7px 0 7px 21px;
+            color: #555;
+        }
+
+        .content-card li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #d41f26;
+            font-size: 20px;
+            line-height: 1.2;
+        }
+
+        .layout-card {
+            border-top-color: #b8863b;
+        }
+
+        .layout-card h3 {
+            color: #9a6b22;
+        }
+
+        .layout-card h4 {
+            margin-top: 24px;
+        }
+
+        .layout-card h4:first-of-type {
+            margin-top: 0;
+        }
+
         @media (max-width: 1024px) {
             .section-container {
                 padding: 50px 30px;
@@ -363,6 +439,11 @@
             }
 
             .wedding-packages {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .content-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
@@ -510,6 +591,14 @@
 
             .package {
                 padding: 18px;
+            }
+
+            .content-card {
+                padding: 22px 18px;
+            }
+
+            .content-card h3 {
+                font-size: 20px;
             }
 
             .package h3 {
@@ -688,6 +777,83 @@
                         <li style="margin-bottom: 10px;">✓ Wedding Album & Video Delivery</li>
                     </ul>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wedding Menu Section -->
+    <section class="wedding-content-section">
+        <div class="section-container">
+            <h2 class="section-title">Wedding <span>Menu Options</span></h2>
+            <p class="content-intro">Thoughtfully planned menus bring together regional Indian favorites and polished Western courses, with live stations and service styles tailored to your celebration.</p>
+
+            <div class="content-grid">
+                <article class="content-card">
+                    <h3>Indian Menu Options</h3>
+                    <h4>Vegetarian Highlights</h4>
+                    <ul>
+                        <li><strong>Interactive Live Stations:</strong> Amritsari Kulcha with Chole counters, live Tawa Chaat, and stone-ground Dosa bars with customized chutneys.</li>
+                        <li><strong>Gourmet Mains:</strong> Rich classics like slow-cooked Dal Makhani, simmered overnight, Paneer Makhmali Tikka Masala, and Kashmiri Dum Aloo.</li>
+                        <li><strong>Regional Specialties:</strong> Rajasthani Gatte ki Sabzi or Gujarati Undhiyu served in traditional brass mini-vessels.</li>
+                    </ul>
+                    <h4>Non-Vegetarian Highlights</h4>
+                    <ul>
+                        <li><strong>Live Grills &amp; Kebabs:</strong> Charcoal-smoked Murgh Malai Tikka, Galouti Kebabs on micro-ulte tawa parathas, and Amritsari Fish Fry stations.</li>
+                        <li><strong>Heritage Mains:</strong> Rogan Josh, classic butter chicken, and slow-cooked Dum Lamb Biryani sealed with dough.</li>
+                        <li><strong>Coastal Additions:</strong> Goan Prawn Curry or Chicken Chettinad paired with appams or fragrant jeera rice.</li>
+                    </ul>
+                </article>
+
+                <article class="content-card">
+                    <h3>Western Menu Options</h3>
+                    <h4>Vegetarian Highlights</h4>
+                    <ul>
+                        <li><strong>Appetizers &amp; Small Plates:</strong> Artisanal burrata bars with heirloom tomatoes, truffle mushroom crostini, and wood-fired flatbreads with goat cheese and caramelized onions.</li>
+                        <li><strong>Plated or Buffet Mains:</strong> Butternut squash ravioli in sage brown butter sauce, seared wild-mushroom risotto, and cauliflower steaks with chimichurri and toasted pine nuts.</li>
+                    </ul>
+                    <h4>Non-Vegetarian Highlights</h4>
+                    <ul>
+                        <li><strong>Appetizers &amp; Small Plates:</strong> Prosciutto-wrapped melon, bacon-wrapped dates with balsamic glaze, and seared scallop spoons with lemon-herb butter.</li>
+                        <li><strong>Plated or Buffet Mains:</strong> Slow-roasted prime rib with red wine reduction, herb-crusted rack of lamb, and pan-seared Atlantic salmon with a dill-cream emulsion.</li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seating Arrangements Section -->
+    <section>
+        <div class="section-container">
+            <h2 class="section-title">Seating Arrangements <span>&amp; Layouts</span></h2>
+            <p class="content-intro">Every layout is shaped around the ceremony, the people who matter most, and the way guests will move through the celebration.</p>
+
+            <div class="content-grid">
+                <article class="content-card layout-card">
+                    <h3>Indian Wedding Seating Layouts</h3>
+                    <h4>The Ceremony Core: Mandap &amp; Ritual Zones</h4>
+                    <ul>
+                        <li><strong>Elders' Zone:</strong> Dedicated, comfortable sofa-style seating in the front rows, directly flanking or facing the mandap so grandparents and senior relatives remain close to the rituals.</li>
+                        <li><strong>Family-Side Balancing:</strong> Clear structural divisions for Ladwale and Ladkiwale blocks during sacred ceremonies, transitioning into blended seating for post-ceremony celebrations.</li>
+                    </ul>
+                    <h4>The Reception Layout</h4>
+                    <ul>
+                        <li><strong>The Elevated Couple's Stage:</strong> Ornate throne-style chairs or a floral couch on a central stage for visibility, guest greetings, and photography.</li>
+                        <li><strong>Tiered Table Clustering:</strong> Large 8-to-10-seater round tables with immediate family closest to the stage, spreading outward to extended relatives and friends.</li>
+                    </ul>
+                </article>
+
+                <article class="content-card layout-card">
+                    <h3>Western Wedding Seating Layouts</h3>
+                    <h4>The Ceremony Layout</h4>
+                    <ul>
+                        <li><strong>Modern Minimalist Rows:</strong> Clean, straight theatre-style chair rows with an open center aisle, floral aisle markers, or texture-rich ribbons instead of heavy bows.</li>
+                    </ul>
+                    <h4>The Reception Layout</h4>
+                    <ul>
+                        <li><strong>Long Banquet Tables:</strong> Grand, uninterrupted linear wooden tables with low-profile floral runners and ambient candlelight for an intimate, communal European dining aesthetic.</li>
+                        <li><strong>Cocktail &amp; Lounge Pockets:</strong> High cocktail tables interspersed with modular velvet sofas and low coffee tables near the bar to encourage fluid guest mingling.</li>
+                    </ul>
+                </article>
             </div>
         </div>
     </section>
