@@ -26,10 +26,14 @@ Professional event management website for PADM&BILL, featuring weddings, corpora
 ## Deployment Instructions
 
 ### Form Backend Setup
-This site now supports employee/vendor registration via a small backend service.
+This site now supports homepage contact messages and employee/vendor registration via a small backend service.
 
 The backend code lives in `form-backend/` and accepts POST requests at `/submit`.
+The homepage contact form sends client messages to this endpoint and stores them in `form-backend/submissions.json`.
+Configured email settings also send each request directly to the site owner when a customer submits the form.
 If a backend is not available, the page falls back to FormSubmit email delivery.
+
+To view stored requests, open the admin dashboard at `http://localhost:3000/admin` and review the JSON file at `form-backend/submissions.json`.
 
 To run the backend locally:
 
@@ -38,6 +42,17 @@ cd form-backend
 npm install
 npm start
 ```
+
+Environment variables for email delivery:
+
+- `SMTP_HOST`
+- `SMTP_PORT`
+- `SMTP_USER`
+- `SMTP_PASS`
+- `EMAIL_TO` (optional, defaults to `padmbill1012@gmail.com`)
+- `EMAIL_FROM` (optional, defaults to same as `EMAIL_TO`)
+
+When these are configured, the backend will send each new submission as an email immediately and also save it to `form-backend/submissions.json`.
 
 Then deploy this backend to a Node.js host such as Render, Railway, or Vercel.
 Update the form endpoint in `brochure.html` if necessary.

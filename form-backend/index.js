@@ -3,10 +3,67 @@ const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
 const cors = require('cors');
+const nodemailer = require('nodemailer');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 const ADMIN_TITLE = 'PADM&BILL Submissions Dashboard';
+
+const EMAIL_TO = process.env.EMAIL_TO || 'padmbill1012@gmail.com';
+const EMAIL_FROM = process.env.EMAIL_FROM || EMAIL_TO;
+const SMTP_HOST = process.env.SMTP_HOST || '';
+const SMTP_PORT = process.env.SMTP_PORT ? parseInt(process.env.SMTP_PORT, 10) : undefined;
+const SMTP_USER = process.env.SMTP_USER || '';
+const SMTP_PASS = process.env.SMTP_PASS || '';
+const EMAIL_ENABLED = SMTP_HOST && SMTP_PORT && SMTP_USER && SMTP_PASS;
+
+const transporter = EMAIL_ENABLED
+  ? nodemailer.createTransport({
+      host: SMTP_HOST,
+      port: SMTP_PORT,
+      secure: SMTP_PORT === 465,
+      auth: {
+        user: SMTP_USER,
+        pass: SMTP_PASS,
+      },
+    })
+  : null;
+
+function buildSubmissionEmail(entry) {
+  const submittedAt = entry._receivedAt || new Date().toISOString();
+  return {
+    from: EMAIL_FROM,
+    to: EMAIL_TO,
+    subject: `New PADM&BILL submission: ${entry.name || entry['Full Name'] || entry['Company / Vendor Name'] || 'Contact Request'}`,
+    text: `A new submission was received:\n\n` +
+      `Name: ${entry.name || entry['Full Name'] || entry['Company / Vendor Name'] || 'Unknown'}\n` +
+      `Email: ${entry.email || entry.Email || ''}\n` +
+      `Phone: ${entry.phone || entry.Phone || ''}\n` +
+      `Type: ${entry.eventType || entry['Registration Type'] || entry.Type || 'Contact'}\n` +
+      `Location: ${entry['Current Location'] || entry['Service Area / City'] || ''}\n` +
+      `Details: ${entry.message || entry['Skills & Experience'] || entry['Service Details'] || ''}\n` +
+      `Received at: ${submittedAt}\n`,
+    html: `<!doctype html><html><body>` +
+      `<h2>New PADM&BILL Submission</h2>` +
+      `<p><strong>Name:</strong> ${entry.name || entry['Full Name'] || entry['Company / Vendor Name'] || 'Unknown'}</p>` +
+      `<p><strong>Email:</strong> ${entry.email || entry.Email || ''}</p>` +
+      `<p><strong>Phone:</strong> ${entry.phone || entry.Phone || ''}</p>` +
+      `<p><strong>Type:</strong> ${entry.eventType || entry['Registration Type'] || entry.Type || 'Contact'}</p>` +
+      `<p><strong>Location:</strong> ${entry['Current Location'] || entry['Service Area / City'] || ''}</p>` +
+      `<p><strong>Details:</strong><br>${(entry.message || entry['Skills & Experience'] || entry['Service Details'] || '').replace(/\n/g, '<br>')}</p>` +
+      `<p><em>Received at ${submittedAt}</em></p>` +
+      `</body></html>`,
+  };
+}
+
+async function sendSubmissionEmail(entry) {
+  if (!transporter) {
+    console.warn('Email not configured. Skipping email send.');
+    return null;
+  }
+  const mailOptions = buildSubmissionEmail(entry);
+  return transporter.sendMail(mailOptions);
+}
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -51,13 +108,13 @@ function renderAdminPage(submissions) {
     .reverse()
     .map((entry, index) => {
       const receivedAt = entry._receivedAt ? new Date(entry._receivedAt).toLocaleString() : 'Unknown';
-      const registrationType = escapeHtml(entry['Registration Type'] || 'Unknown');
+      const registrationType = escapeHtml(entry['Registration Type'] || entry.Type || 'Contact');
       const name = escapeHtml(entry['Full Name'] || entry['Company / Vendor Name'] || 'Unknown');
       const email = escapeHtml(entry.Email || '');
       const phone = escapeHtml(entry.Phone || '');
-      const role = escapeHtml(entry['Preferred Role'] || entry['Service Category'] || '');
+      const role = escapeHtml(entry['Preferred Role'] || entry['Service Category'] || entry.eventType || '');
       const location = escapeHtml(entry['Current Location'] || entry['Service Area / City'] || '');
-      const details = escapeHtml(entry['Skills & Experience'] || entry['Service Details'] || '');
+      const details = escapeHtml(entry['Skills & Experience'] || entry['Service Details'] || entry.message || '');
 
       return `
         <tr>
@@ -296,14 +353,23 @@ function renderAdminPage(submissions) {
 </html>`;
 }
 
-app.post('/submit', (req, res) => {
+app.post('/submit', async (req, res) => {
   try {
     const payload = req.body || {};
     // simple honeypot check
     if (payload.website) {
       return res.status(400).json({ ok: false, message: 'Spam detected' });
     }
+
     saveSubmission(payload);
+
+    try {
+      await sendSubmissionEmail(payload);
+      console.log('Submission email sent.');
+    } catch (emailError) {
+      console.error('Failed to send submission email:', emailError);
+    }
+
     return res.json({ ok: true, message: 'Submission saved' });
   } catch (err) {
     console.error('Submit error:', err);

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Consultancy & Design Services | PADM&BILL</title>
+    <meta name="description" content="Plan smarter events with PADM&BILL's event consultancy and design services, including spatial planning, stall zoning, crowd flow, seating blueprints, decor curation, vendor checklists, and day-of execution guides.">
+    <meta name="keywords" content="event consultancy India, event spatial planning, stall placement design, crowd flow mapping, event floor layout, event decor curation, event vendor checklist">
+    <meta name="author" content="PADM&BILL (OPC) PRIVATE LIMITED">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://padmandbill.com/consultancy.html">
+    <meta name="theme-color" content="#d41f26">
+    <style>
+        :root { --red: #d41f26; --ink: #1a1a1a; --muted: #5d5d5d; --cream: #fffaf5; --line: #eadfd5; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { color: var(--ink); font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; min-width: 320px; }
+        a { color: inherit; }
+        header { background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,.1); position: sticky; top: 0; z-index: 10; }
+        .header-top { background: var(--ink); color: #fff; font-size: 14px; padding: 10px 0; }
+        .header-top-content, .nav-container, .section-container, .footer-content { margin: auto; max-width: 1200px; padding-left: 20px; padding-right: 20px; }
+        .header-top-content { align-items: center; display: flex; gap: 20px; justify-content: space-between; }
+        .header-top-left { display: flex; flex-wrap: wrap; gap: 20px; }
+        .nav-container { align-items: center; display: flex; gap: 20px; justify-content: space-between; min-height: 80px; }
+        .logo { align-items: center; display: flex; gap: 12px; text-decoration: none; }
+        .logo img { height: 50px; width: auto; }
+        .logo span { color: var(--red); font-size: 24px; font-weight: 700; }
+        nav { display: flex; justify-content: flex-end; }
+        nav ul { align-items: center; display: flex; gap: 24px; list-style: none; }
+        nav a { font-weight: 500; text-decoration: none; }
+        nav a:hover, nav a[aria-current="page"] { color: var(--red); }
+        .cta-button, .primary-btn { background: var(--red); border: 0; border-radius: 5px; color: #fff; cursor: pointer; font-weight: 700; text-decoration: none; }
+        .cta-button { padding: 10px 25px; }
+        .hero { background: linear-gradient(105deg, rgba(26,26,26,.88), rgba(122,20,25,.66)), url("https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=1600&h=850&fit=crop") center/cover; color: #fff; min-height: 500px; display: grid; align-items: center; }
+        .hero-content { max-width: 1200px; padding: 80px 20px; width: 100%; margin: auto; }
+        .eyebrow { color: #ffd7b8; font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+        h1 { font-size: clamp(42px, 6vw, 74px); line-height: 1.05; margin: 18px 0; max-width: 780px; }
+        .hero p { font-size: 20px; max-width: 650px; opacity: .92; }
+        .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+        .hero-actions a { border: 1px solid #fff; border-radius: 5px; padding: 13px 23px; text-decoration: none; }
+        .hero-actions .primary-btn { border-color: var(--red); padding: 14px 24px; }
+        section { padding: 80px 20px; }
+        .section-container { width: 100%; }
+        .intro { background: var(--cream); }
+        .intro-grid { align-items: end; display: grid; gap: 45px; grid-template-columns: 1.2fr .8fr; }
+        .section-kicker { color: var(--red); font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; }
+        h2 { font-size: clamp(30px, 4vw, 48px); line-height: 1.15; margin: 12px 0 18px; }
+        .intro p { color: var(--muted); font-size: 18px; max-width: 720px; }
+        .stat-panel { border-left: 3px solid var(--red); padding: 8px 0 8px 25px; }
+        .stat-panel strong { display: block; font-size: 40px; line-height: 1; }
+        .stat-panel span { color: var(--muted); display: block; margin-top: 8px; }
+        .services { background: #fff; }
+        .section-heading { margin-bottom: 38px; max-width: 650px; }
+        .service-grid { display: grid; gap: 18px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .service-card { border: 1px solid var(--line); border-radius: 8px; padding: 28px; transition: border-color .2s, transform .2s, box-shadow .2s; }
+        .service-card:hover { border-color: var(--red); box-shadow: 0 14px 30px rgba(80,35,20,.09); transform: translateY(-3px); }
+        .service-number { color: var(--red); font-size: 14px; font-weight: 700; letter-spacing: 1px; }
+        .service-card h3 { font-size: 22px; line-height: 1.25; margin: 12px 0 10px; }
+        .service-card p { color: var(--muted); }
+        .process { background: var(--ink); color: #fff; }
+        .process .section-kicker { color: #ffb78b; }
+        .process-grid { display: grid; gap: 30px; grid-template-columns: repeat(3, 1fr); margin-top: 35px; }
+        .process-step { border-top: 1px solid rgba(255,255,255,.35); padding-top: 20px; }
+        .process-step strong { color: #ffb78b; display: block; font-size: 28px; margin-bottom: 10px; }
+        .process-step p { color: #ddd; }
+        .cta { background: var(--red); color: #fff; text-align: center; }
+        .cta h2 { margin-left: auto; margin-right: auto; max-width: 700px; }
+        .cta p { margin: 0 auto 25px; max-width: 600px; }
+        .cta .primary-btn { background: #fff; color: var(--red); display: inline-block; padding: 14px 26px; }
+        footer { background: #111; color: #fff; padding: 55px 0 20px; }
+        .footer-content { display: grid; gap: 35px; grid-template-columns: repeat(3, 1fr); }
+        .footer-column h3 { margin-bottom: 15px; }
+        .footer-column ul { list-style: none; }
+        .footer-column li { color: #ccc; margin-bottom: 8px; }
+        .footer-column a { text-decoration: none; }
+        .footer-column a:hover { color: #ffb78b; }
+        .footer-bottom { border-top: 1px solid #333; color: #aaa; margin: 35px auto 0; max-width: 1160px; padding-top: 18px; text-align: center; }
+        .hamburger { display: none; }
+        @media (max-width: 900px) { nav ul { gap: 13px; } .intro-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 700px) { .header-top-left { gap: 5px 12px; } .header-top-right { display: none; } .nav-container { min-height: 70px; } .logo img { height: 42px; } .logo span { font-size: 20px; } .hamburger { cursor: pointer; display: flex; flex-direction: column; gap: 5px; } .hamburger span { background: var(--red); height: 3px; width: 25px; } nav { background: #fff; display: none; left: 0; padding: 10px 20px 20px; position: absolute; right: 0; top: 70px; } nav.active { display: block; } nav ul { align-items: stretch; flex-direction: column; gap: 0; } nav li { border-bottom: 1px solid #eee; padding: 10px 0; } .hero { min-height: 540px; } .hero-content { padding: 55px 20px; } .hero p { font-size: 17px; } section { padding: 60px 20px; } .service-grid, .process-grid, .footer-content { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-top"><div class="header-top-content"><div class="header-top-left"><span>📞 6395279991 | 6395600361</span><span>✉️ padmbill1012@gmail.com</span></div><a class="cta-button" href="index.html#contact">Get a Quote</a></div></div>
+        <div class="nav-container">
+            <a href="index.html" class="logo"><img src="logo.png?v=20260609" alt="PADM&BILL logo"><span>PADM&BILL</span></a>
+            <nav id="navbar"><ul><li><a href="index.html">Home</a></li><li><a href="weddings.html">Weddings</a></li><li><a href="corporate.html">Corporate</a></li><li><a href="parties.html">Parties</a></li><li><a href="festivals.html">Festivals</a></li><li><a href="consultancy.html" aria-current="page">Consultancy</a></li><li><a href="index.html#contact">Contact</a></li></ul></nav>
+            <div class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></div>
+        </div>
+    </header>
+    <main>
+        <section class="hero"><div class="hero-content"><span class="eyebrow">PADM&BILL | Strategy meets experience</span><h1>Make every corner of your event work harder.</h1><p>Event consultancy and design for gatherings that feel beautiful, move naturally, and run with confidence.</p><div class="hero-actions"><a class="primary-btn" href="index.html#contact">Plan your event</a><a href="#services">Explore services</a></div></div></section>
+        <section class="intro"><div class="section-container intro-grid"><div><span class="section-kicker">The practical difference</span><h2>Great events are designed for people, not just photographs.</h2><p>We turn your venue, audience, programme, and vision into a clear working plan. From the first stall zone to the final guest exit, every decision is mapped for comfort, visibility, flow, and smooth execution.</p></div><div class="stat-panel"><strong>360°</strong><span>of the event considered, from spatial planning to day-of handover.</span></div></div></section>
+        <section class="services" id="services"><div class="section-container"><div class="section-heading"><span class="section-kicker">What we design</span><h2>Event Consultancy &amp; Design Services</h2><p>Clear visual and operational direction for hosts, local teams, vendors, exhibitions, fairs, celebrations, and large gatherings.</p></div><div class="service-grid"><article class="service-card"><span class="service-number">01</span><h3>Stall Placement &amp; Layout Design</h3><p>Zone food, exhibition, retail, and activity stalls for visibility, access, and a balanced visitor experience.</p></article><article class="service-card"><span class="service-number">02</span><h3>Entry &amp; Exit Flow Mapping</h3><p>Plan crowd movement, queue zones, emergency access, and bottleneck prevention before the doors open.</p></article><article class="service-card"><span class="service-number">03</span><h3>Seating Arrangement Blueprint</h3><p>Optimise guest capacity with thoughtful seating plans, VIP sections, sightlines, and service access.</p></article><article class="service-card"><span class="service-number">04</span><h3>Event Spatial Planning &amp; Floor Layout</h3><p>Bring seating, stage, entry points, guest flow, service areas, and experience zones together in one clear map.</p></article><article class="service-card"><span class="service-number">05</span><h3>Decor &amp; Aesthetic Curation</h3><p>Shape the look and feel with colour palettes, mood boards, theme concepts, and cohesive styling direction.</p></article><article class="service-card"><span class="service-number">06</span><h3>Master Vendor &amp; Material Checklist</h3><p>Know what to buy or rent, where to source it, and what needs to be ready before setup day.</p></article><article class="service-card"><span class="service-number">07</span><h3>Day-of Blueprint Guide</h3><p>Give your host or local team a step-by-step arrangement guide they can confidently execute on the ground.</p></article></div></div></section>
+        <section class="process"><div class="section-container"><span class="section-kicker">How it comes together</span><h2>From idea to an event-ready plan.</h2><div class="process-grid"><div class="process-step"><strong>01 / Understand</strong><p>We review your audience, venue, programme, priorities, budget, and operational constraints.</p></div><div class="process-step"><strong>02 / Design</strong><p>We translate the brief into practical layouts, visual direction, checklists, and movement plans.</p></div><div class="process-step"><strong>03 / Handover</strong><p>You receive a clear blueprint that your vendors and on-ground team can use with confidence.</p></div></div></div></section>
+        <section class="cta"><div class="section-container"><h2>Have a venue, a rough idea, or a complicated crowd to organise?</h2><p>Bring us the brief. We will help you turn it into a plan that makes sense on paper and in the real world.</p><a class="primary-btn" href="index.html#contact">Start a consultation</a></div></section>
+    </main>
+    <footer><div class="footer-content"><div class="footer-column"><h3>Company</h3><ul><li><a href="index.html#about">About Us</a></li><li><a href="index.html#services">Services</a></li><li><a href="consultancy.html">Event Consultancy</a></li></ul></div><div class="footer-column"><h3>Services</h3><ul><li><a href="weddings.html">Wedding Events</a></li><li><a href="corporate.html">Corporate Events</a></li><li><a href="parties.html">Private Parties</a></li><li><a href="festivals.html">Festival Events</a></li></ul></div><div class="footer-column"><h3>Contact</h3><ul><li><a href="tel:6395279991">📞 6395279991</a></li><li><a href="tel:6395600361">📞 6395600361</a></li><li><a href="mailto:padmbill1012@gmail.com">✉️ padmbill1012@gmail.com</a></li><li>Sanskriti Lok Colony,<br>Morowala, Brahmanwala,<br>Dehradun, Uttarakhand - 248001</li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 PADM&amp;BILL (OPC) PRIVATE LIMITED. All Rights Reserved.</p></div></footer>
+    <script>const hamburger = document.getElementById('hamburger'); const navbar = document.getElementById('navbar'); hamburger.addEventListener('click', () => navbar.classList.toggle('active')); navbar.querySelectorAll('a').forEach(link => link.addEventListener('click', () => navbar.classList.remove('active')));</script>
+</body>
+</html>
