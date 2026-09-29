@@ -1,0 +1,143 @@
+.site-search {
+    align-items: center;
+    display: flex;
+    gap: 6px;
+    margin-left: 18px;
+}
+
+.site-search input {
+    border: 1px solid #c9c9c9;
+    border-radius: 4px;
+    font: inherit;
+    min-height: 40px;
+    min-width: 150px;
+    padding: 8px 10px;
+    width: 190px;
+}
+
+.site-search button {
+    background: #d41f26;
+    border: 0;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 700;
+    min-height: 40px;
+    padding: 8px 12px;
+}
+
+.site-search input:focus-visible,
+.site-search button:focus-visible,
+.floating-contact a:focus-visible {
+    outline: 3px solid #f2a900;
+    outline-offset: 2px;
+}
+
+.floating-contact {
+    bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: fixed;
+    right: 20px;
+    z-index: 1000;
+}
+
+.floating-contact a {
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, .24);
+    color: #fff;
+    display: inline-flex;
+    font: 700 15px/1.2 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    gap: 9px;
+    justify-content: center;
+    min-height: 48px;
+    min-width: 128px;
+    padding: 12px 16px;
+    text-decoration: none;
+}
+
+.floating-contact .whatsapp-link { background: #128c4a; }
+.floating-contact .call-link { background: #d41f26; }
+
+.site-faq {
+    margin: 56px auto;
+    max-width: 1000px;
+    padding: 0 20px;
+}
+
+.site-faq h2 { margin-bottom: 18px; }
+.site-faq details { border-bottom: 1px solid #ddd; padding: 15px 0; }
+.site-faq summary { cursor: pointer; font-weight: 700; }
+.site-faq details p { color: #555; margin: 10px 0 0; }
+
+.company-signoff {
+    align-items: center;
+    border-top: 1px solid rgba(120, 120, 120, .3);
+    color: inherit;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+    justify-content: center;
+    margin: 18px auto 0;
+    padding: 16px 12px 0;
+    text-align: center;
+}
+
+.company-signoff a {
+    color: inherit;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.service-quote-cta {
+    background: #f6f2ec;
+    margin: 48px auto;
+    padding: 34px 20px;
+    text-align: center;
+}
+
+.service-quote-cta a {
+    background: #d41f26;
+    border-radius: 4px;
+    color: #fff;
+    display: inline-block;
+    font-weight: 700;
+    margin-top: 14px;
+    padding: 12px 24px;
+    text-decoration: none;
+}
+
+@media (max-width: 900px) {
+    .site-search { margin: 12px 0 0; }
+    .site-search input { flex: 1; min-width: 0; width: auto; }
+}
+
+@media (max-width: 600px) {
+    .company-signoff {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .floating-contact {
+        bottom: 12px;
+        flex-direction: row;
+        left: 12px;
+        right: 12px;
+    }
+
+    .floating-contact a { flex: 1; min-width: 0; }
+}
+
+.visually-hidden {
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}

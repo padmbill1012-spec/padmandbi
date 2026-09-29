@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Best Event Management Company in India | Wedding, Corporate & Festival Planner | PADM&BILL</title>
+    <title>Event Planner in Dehradun, Uttarakhand | Weddings, Parties & Corporate Events | PADM&amp;BILL</title>
         <!-- SEO Meta Tags -->
-        <meta name="description" content="PADM&BILL (OPC) PRIVATE LIMITED is a leading event management company in India offering wedding planners, corporate event organizers, festival planners, birthday party planners, concert management, stage setup, decor, venue management, and destination wedding planning for clients across India, Nepal, Bhutan, and nearby countries." />
+        <meta name="description" content="PADM&amp;BILL plans weddings, birthday decorations, corporate events, festivals, and celebrations in Dehradun and across Uttarakhand, with tailored event design, decor, and coordination." />
         <meta name="keywords" content="event management company in India, best event management company India, event planner India, wedding planner India, wedding event management company in India, destination wedding planner India, corporate event planner India, corporate event management company India, festival event planner India, party planner India, birthday party planner India, anniversary event planner India, event decorators India, wedding decorators India, wedding venue planner India, concert organizer India, stage event management India, luxury weddings India, event management company Dehradun, event planner Dehradun, PADM&BILL" />
         <meta name="author" content="PADM&BILL (OPC) PRIVATE LIMITED" />
         <meta name="robots" content="index, follow" />
@@ -15,6 +15,7 @@
         <meta name="ICBM" content="30.316494, 78.032192" />
         <link rel="canonical" href="https://padmandbill.com/" />
         <meta name="theme-color" content="#d41f26" />
+        <link rel="stylesheet" href="site-tools.css" />
 
         <!-- Open Graph / Social -->
         <meta property="og:title" content="PADM&BILL - Event Management in Dehradun" />
@@ -1750,7 +1751,7 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <h1>Turning Moments into Memories</h1>
+            <h1>Event Planner in Dehradun, Uttarakhand</h1>
             <p>Best Wedding Planner, Corporate Event Management Company & Festival Organizer in India, Dehradun, Uttarakhand</p>
             <p class="tagline">Wedding Planning | Corporate Events | Concerts | Birthday Parties | Festival Celebrations | Destination Weddings</p>
             <p class="tagline" style="font-size: 16px; margin-bottom: 30px;">End-to-End Event Planning, Decor, Venue, Catering & Entertainment for India, Nepal, Bhutan & Nearby Countries</p>
@@ -2301,10 +2302,6 @@
                         <input type="tel" id="phone" name="phone" required>
                     </div>
                     <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
                         <label for="event-type">Event Type</label>
                         <select id="event-type" name="event-type" required>
                             <option value="">Select Event Type</option>
@@ -2312,18 +2309,24 @@
                             <option value="Corporate">Corporate Events</option>
                             <option value="Entertainment">Entertainment Events</option>
                             <option value="Birthday">Birthday Party</option>
+                            <option value="Birthday Decoration">Birthday Decoration</option>
                             <option value="Anniversary">Anniversary Celebration</option>
                             <option value="Festival">Festival Event</option>
                             <option value="Other">Other</option>
                         </select>
                     </div>
-                    <input type="text" id="contact-website" name="website" autocomplete="off" tabindex="-1" style="position:absolute; left:-9999px; top:0; width:1px; height:1px; opacity:0; pointer-events:none;" aria-hidden="true">
                     <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" required></textarea>
+                        <label for="event-date">Event Date</label>
+                        <input type="date" id="event-date" name="eventDate" required>
                     </div>
+                    <div class="form-group">
+                        <label for="event-location">Event Location</label>
+                        <input type="text" id="event-location" name="location" autocomplete="street-address" placeholder="City, venue, or area" required>
+                    </div>
+                    <input type="text" id="contact-website" name="website" autocomplete="off" tabindex="-1" style="position:absolute; left:-9999px; top:0; width:1px; height:1px; opacity:0; pointer-events:none;" aria-hidden="true">
                     <button type="submit" class="submit-btn">Submit</button>
                     <div id="contact-feedback" class="contact-feedback" aria-live="polite"></div>
+                    <p class="form-response-time">We aim to respond within 1 business day.</p>
                 </form>
             </div>
         </div>
@@ -2472,9 +2475,9 @@
             const payload = {
                 name: form.name.value.trim(),
                 phone: form.phone.value.trim(),
-                email: form.email.value.trim(),
                 eventType: form['event-type'].value,
-                message: form.message.value.trim(),
+                eventDate: form.eventDate.value,
+                location: form.location.value.trim(),
                 website: form.website ? form.website.value.trim() : ''
             };
 
@@ -2490,13 +2493,14 @@
                     throw new Error(result.message || 'Failed to submit message');
                 }
 
-                showContactFeedback('Thank you! Your request has been recorded and sent. We will respond quickly.', false);
+                showContactFeedback('Thank you! Your quote request is received. We aim to respond within 1 business day.', false);
                 form.reset();
             } catch (error) {
                 console.error('Contact form submit failed:', error);
-                showContactFeedback('Unable to save your request right now. Please try again later.', true);
+                showContactFeedback('We could not submit this request just now. Please call 6395279991 or use the WhatsApp button.', true);
             }
         }
     </script>
+    <script src="site-tools.js" defer></script>
 </body>
 </html>

@@ -40,7 +40,8 @@ function buildSubmissionEmail(entry) {
       `Email: ${entry.email || entry.Email || ''}\n` +
       `Phone: ${entry.phone || entry.Phone || ''}\n` +
       `Type: ${entry.eventType || entry['Registration Type'] || entry.Type || 'Contact'}\n` +
-      `Location: ${entry['Current Location'] || entry['Service Area / City'] || ''}\n` +
+      `Event date: ${entry.eventDate || ''}\n` +
+      `Location: ${entry.location || entry['Current Location'] || entry['Service Area / City'] || ''}\n` +
       `Details: ${entry.message || entry['Skills & Experience'] || entry['Service Details'] || ''}\n` +
       `Received at: ${submittedAt}\n`,
     html: `<!doctype html><html><body>` +
@@ -49,7 +50,8 @@ function buildSubmissionEmail(entry) {
       `<p><strong>Email:</strong> ${entry.email || entry.Email || ''}</p>` +
       `<p><strong>Phone:</strong> ${entry.phone || entry.Phone || ''}</p>` +
       `<p><strong>Type:</strong> ${entry.eventType || entry['Registration Type'] || entry.Type || 'Contact'}</p>` +
-      `<p><strong>Location:</strong> ${entry['Current Location'] || entry['Service Area / City'] || ''}</p>` +
+      `<p><strong>Event date:</strong> ${escapeHtml(entry.eventDate || '')}</p>` +
+      `<p><strong>Location:</strong> ${escapeHtml(entry.location || entry['Current Location'] || entry['Service Area / City'] || '')}</p>` +
       `<p><strong>Details:</strong><br>${(entry.message || entry['Skills & Experience'] || entry['Service Details'] || '').replace(/\n/g, '<br>')}</p>` +
       `<p><em>Received at ${submittedAt}</em></p>` +
       `</body></html>`,
