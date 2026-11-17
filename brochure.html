@@ -1236,8 +1236,7 @@
                     </div>
 
                     <div class="registration-forms">
-                        <form id="employee-form" class="registration-form active" name="employee-registration" method="POST" action="/" data-netlify="true" netlify-honeypot="website">
-                            <input type="hidden" name="form-name" value="employee-registration">
+                        <form id="employee-form" class="registration-form active" action="/submit" method="POST">
                             <input type="hidden" name="Registration Type" value="Employee">
                             <div class="honeypot-field">
                                 <label for="employee-website">Website</label>
@@ -1301,8 +1300,7 @@
                             <button class="submit-btn" type="submit">Submit Employee Registration</button>
                         </form>
 
-                        <form id="vendor-form" class="registration-form" name="vendor-registration" method="POST" action="/" data-netlify="true" netlify-honeypot="website">
-                            <input type="hidden" name="form-name" value="vendor-registration">
+                        <form id="vendor-form" class="registration-form" action="/submit" method="POST">
                             <input type="hidden" name="Registration Type" value="Vendor">
                             <div class="honeypot-field">
                                 <label for="vendor-website-hp">Website</label>
@@ -1475,15 +1473,19 @@
 
                 try {
                     const formData = new FormData(form);
-                    formData.set('form-name', form.name);
-                    const response = await fetch('/', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                        body: new URLSearchParams(formData).toString()
+                    const payload = {};
+                    formData.forEach((value, key) => {
+                        payload[key] = value;
                     });
+                    const response = await fetch('/submit', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    const result = await response.json();
 
-                    if (!response.ok) {
-                        throw new Error(`Form submission failed with status ${response.status}`);
+                    if (!response.ok || !result.ok) {
+                        throw new Error(result.message || `Form submission failed with status ${response.status}`);
                     }
 
                     showFeedback('Thank you! Your registration has been received and will be reviewed.');

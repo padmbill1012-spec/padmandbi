@@ -25,12 +25,32 @@ Professional event management website for PADM&BILL, featuring weddings, corpora
 
 ## Deployment Instructions
 
-### Form Submissions
-The homepage contact form and employee/vendor registration forms use Netlify Forms. Each form is submitted as URL-encoded data and appears in the site's Netlify dashboard under **Forms**.
+### Form Backend Setup
+This site supports homepage contact messages and employee/vendor registration via the form backend.
 
-To receive submissions, enable automatic form detection in **Site configuration → Forms** in Netlify, then deploy the site. Configure a form notification in Netlify if submissions should also be forwarded by email.
+The backend code lives in `form-backend/` and accepts POST requests at `/submit`.
+The website sends requests to this endpoint. The backend stores submissions in `form-backend/submissions.json` and emails each request when SMTP is configured.
 
-The legacy Express implementation in `form-backend/` is for standalone hosting and is not used by the static Netlify deployment.
+To view stored requests, open the admin dashboard at `http://localhost:3000/admin` and review `form-backend/submissions.json`.
+
+To run the backend locally:
+
+```bash
+cd form-backend
+npm install
+npm start
+```
+
+Environment variables for email delivery:
+
+- `SMTP_HOST`
+- `SMTP_PORT`
+- `SMTP_USER`
+- `SMTP_PASS`
+- `EMAIL_TO` (optional, defaults to `padmbill1012@gmail.com`)
+- `EMAIL_FROM` (optional, defaults to same as `EMAIL_TO`)
+
+Deploy the backend to a Node.js host such as Render, Railway, or Vercel and configure the website's `/submit` route to reach that backend.
 
 ### Step 1: Create GitHub Repository
 1. Go to https://github.com/new

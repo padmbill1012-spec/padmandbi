@@ -2311,8 +2311,7 @@
                         <p>Sanskriti Lok Colony,<br>Morowala, Brahmanwala,<br>Dehradun, Uttarakhand – 248001</p>
                     </div>
                 </div>
-                <form class="contact-form" name="contact-request" method="POST" data-netlify="true" netlify-honeypot="website" onsubmit="handleSubmit(event)">
-                    <input type="hidden" name="form-name" value="contact-request">
+                <form class="contact-form" onsubmit="handleSubmit(event)">
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" id="name" name="name" required>
@@ -2425,20 +2424,29 @@
         async function handleSubmit(event) {
             event.preventDefault();
             const form = event.target;
+            const payload = {
+                name: form.name.value.trim(),
+                phone: form.phone.value.trim(),
+                eventType: form['event-type'].value,
+                eventDate: form.eventDate.value,
+                location: form.location.value.trim(),
+                website: form.website ? form.website.value.trim() : ''
+            };
             const submitButton = form.querySelector('button[type="submit"]');
             const originalButtonText = submitButton.textContent;
             submitButton.disabled = true;
             submitButton.textContent = 'Submitting...';
 
             try {
-                const response = await fetch('/', {
+                const response = await fetch('/submit', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: new URLSearchParams(new FormData(form)).toString()
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
                 });
+                const result = await response.json();
 
-                if (!response.ok) {
-                    throw new Error(`Form submission failed with status ${response.status}`);
+                if (!response.ok || !result.ok) {
+                    throw new Error(result.message || `Form submission failed with status ${response.status}`);
                 }
 
                 showContactFeedback('Thank you! Your quote request is received. We aim to respond within 1 business day.', false);
