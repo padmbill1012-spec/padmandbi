@@ -579,6 +579,12 @@
             display: block;
         }
 
+        .form-feedback.error {
+            background-color: #fef2f2;
+            color: #991b1b;
+            border-color: #fecaca;
+        }
+
         .honeypot-field {
             position: absolute;
             left: -9999px;
@@ -1222,9 +1228,7 @@
                         <p>Choose the registration type that matches your role. Employees can apply for event support and coordination roles, while vendors can register to partner with PADM&BILL for deliveries, services, and event execution.</p>
                     </div>
 
-                    <div id="registration-feedback" class="form-feedback" role="status" aria-live="polite">
-                        Thank you! Your registration request is being submitted. The page will refresh once complete.
-                    </div>
+                    <div id="registration-feedback" class="form-feedback" role="status" aria-live="polite"></div>
 
                     <div class="registration-tabs">
                         <div class="registration-tab active" data-target="employee-form">Employee Registration</div>
@@ -1232,7 +1236,8 @@
                     </div>
 
                     <div class="registration-forms">
-                        <form id="employee-form" class="registration-form active" action="/submit" method="POST">
+                        <form id="employee-form" class="registration-form active" name="employee-registration" method="POST" action="/" data-netlify="true" netlify-honeypot="website">
+                            <input type="hidden" name="form-name" value="employee-registration">
                             <input type="hidden" name="Registration Type" value="Employee">
                             <div class="honeypot-field">
                                 <label for="employee-website">Website</label>
@@ -1296,7 +1301,8 @@
                             <button class="submit-btn" type="submit">Submit Employee Registration</button>
                         </form>
 
-                        <form id="vendor-form" class="registration-form" action="/submit" method="POST">
+                        <form id="vendor-form" class="registration-form" name="vendor-registration" method="POST" action="/" data-netlify="true" netlify-honeypot="website">
+                            <input type="hidden" name="form-name" value="vendor-registration">
                             <input type="hidden" name="Registration Type" value="Vendor">
                             <div class="honeypot-field">
                                 <label for="vendor-website-hp">Website</label>
@@ -1452,43 +1458,43 @@
         const registrationForms = document.querySelectorAll('.registration-form');
 
         // Show simple local feedback when form submitted
-        function showFeedback(message) {
+        function showFeedback(message, isError = false) {
             feedback.classList.add('visible');
+            feedback.classList.toggle('error', isError);
             feedback.textContent = message;
             setTimeout(() => feedback.classList.remove('visible'), 8000);
         }
 
         registrationForms.forEach(form => {
-            // intercept submission to try backend first
-            form.addEventListener('submit', function(e) {
-                const useBackend = true; // try backend endpoint first
-                if (!useBackend) return; // let normal submission proceed
-
+            form.addEventListener('submit', async function(e) {
                 e.preventDefault();
-                const url = '/submit';
-                const formData = new FormData(form);
-                // convert to JSON object
-                const obj = {};
-                formData.forEach((v, k) => { obj[k] = v; });
+                const submitButton = form.querySelector('button[type="submit"]');
+                const originalButtonText = submitButton.textContent;
+                submitButton.disabled = true;
+                submitButton.textContent = 'Submitting...';
 
-                fetch(url, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(obj)
-                }).then(res => {
-                    if (res.ok) {
-                        showFeedback('Thank you! Your registration has been recorded and will be sent for review.');
-                        form.reset();
-                    } else {
-                        // fallback to FormSubmit
-                        showFeedback('Server unavailable — submitting via email fallback.');
-                        setTimeout(() => form.submit(), 600);
+                try {
+                    const formData = new FormData(form);
+                    formData.set('form-name', form.name);
+                    const response = await fetch('/', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                        body: new URLSearchParams(formData).toString()
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`Form submission failed with status ${response.status}`);
                     }
-                }).catch(() => {
-                    // fallback to FormSubmit
-                    showFeedback('Offline — submitting via email fallback.');
-                    setTimeout(() => form.submit(), 600);
-                });
+
+                    showFeedback('Thank you! Your registration has been received and will be reviewed.');
+                    form.reset();
+                } catch (error) {
+                    console.error('Registration form submit failed:', error);
+                    showFeedback('We could not submit your registration just now. Please try again.', true);
+                } finally {
+                    submitButton.disabled = false;
+                    submitButton.textContent = originalButtonText;
+                }
             });
         });
     </script>
